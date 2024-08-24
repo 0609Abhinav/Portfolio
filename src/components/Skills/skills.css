@@ -1,66 +1,153 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
 #skills {
-    overflow: hidden;
-    width:100vw;
-    max-width:65rem;
+    width: 100vw;
+    max-width: 80rem;
     display: flex;
-    flex-direction :column;
-    align-items:center;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f9f9f9, #e0e4e8);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
 }
-.skillTitle{
-    font-size:3rem;
+
+.skillTitle {
+    font-size: 3rem;
     font-weight: 600;
-    padding-top: 3rem;
-    margin-bottom: 1.5rem;
+    color: #2c3e50;
+    margin: 2rem 0 1.5rem;
+    animation: fadeIn 2s ease-out;
 }
-.skikllDesc {
+.skillAnimationWrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.skillAnimation {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)), 
+    linear-gradient(135deg, rgba(0, 188, 212, 0.5), rgba(0, 188, 212, 0.3));
+    background-blend-mode: overlay;
+    animation: animateBackground 20s linear infinite;
+}
+
+.skillDesc {
+    font-size: 1rem;
     font-weight: 400;
-    font-size:1rem;
+    color: #34495e;
     max-width: 51rem;
-    padding: 0 2rem;;
+    margin: 0 auto;
+    padding: 0 2rem;
+    line-height: 1.6;
+    animation: fadeIn 2s ease-out 0.5s;
 }
 
 .skillBars {
-    margin: 1.5rem;
-    width:100vw;
-    max-width: 80%;
-    text-align: left;
-    
-}
-.skillBar{
     display: flex;
-    margin: 1rem;
-    padding:1.5rem 2rem;
-    background:rgb(81, 138, 203);
-    border-radius: 12px;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 2rem;
 }
-.skillBarImg{
+
+.skillBar {
+    position: relative;
+    width: 350px;
+    height: 200px;
+    padding: 1.5rem 2rem;
+    background: #3498db;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 2s ease-out 1s;
+}
+
+.skillBar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.skillBarImg {
     object-fit: cover;
     height: 3rem;
     width: 3rem;
     margin-right: 2rem;
-}
-.skillBarText>p{
-    font-size: 0.8rem;
-    font-weight: 200;
+    z-index: 2;
 }
 
-@media screen and (max-width:720px) {
-    .skillBarText>p{
+.skillBarText {
+    flex: 1;
+    position: relative;
+    z-index: 2;
+}
+
+.skillBarText h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0 0 0.5rem;
+}
+
+.skillBarText p {
+    font-size: 0.8rem;
+    font-weight: 200;
+    color: #ecf0f1;
+    margin: 0;
+}
+
+@media screen and (max-width: 720px) {
+    .skillBarText p {
         font-size: 2vw;
     }
 }
-@media screen and (max-width:480px) {
-    .skillBarText>p{
+
+@media screen and (max-width: 480px) {
+    .skillBarText p {
         font-size: 3vw;
     }
-    .skillBarImg{
+    .skillBarImg {
         height: 2.25rem;
         width: 2.25rem;
     }
-    .skillBarText>h2{
-        font-size:5vw;
+    .skillBarText h2 {
+        font-size: 5vw;
     }
 }
+
+  
+  @keyframes moveIcon {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(10deg);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg);
+    }
+  }
+  
