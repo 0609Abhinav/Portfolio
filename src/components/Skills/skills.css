@@ -3,85 +3,142 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif;
     line-height: 1.6;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)),
+                linear-gradient(135deg, rgba(0, 188, 212, 0.5), rgba(0, 188, 212, 0.3));
+    background-blend-mode: overlay;
+    color: aliceblue;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 
+/* Skills Section Styles */
 #skills {
     width: 100vw;
-    max-width: 80rem;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
     margin: 0 auto;
-    padding: 2rem;
-    background: linear-gradient(135deg, #f9f9f9, #e0e4e8);
-    border-radius: 15px;
-    position: relative;
-    overflow: hidden;
-}
-
-.skillTitle {
-    font-size: 3rem;
-    font-weight: 600;
-    color: #2c3e50;
-    margin: 2rem 0 1.5rem;
-    animation: fadeIn 2s ease-out;
-}
-.skillAnimationWrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 0;
-}
-
-.skillAnimation {
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 1)), 
-    linear-gradient(135deg, rgba(0, 188, 212, 0.5), rgba(0, 188, 212, 0.3));
+    padding: 4rem;
+    background: #dbdada;
     background-blend-mode: overlay;
-    animation: animateBackground 20s linear infinite;
+    position: center;
+    overflow: hidden;
+}
+
+/* Skill Sections */
+.skill-section {
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    margin: 1rem 0;
+    overflow: hidden;
+    justify-content: center;
+}
+
+.skill-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: center;
+    justify-content: center;
+}
+
+/* Skill Items Container */
+.skill-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    position: relative;
+}
+
+/* Skill Item */
+.skill-item {
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease, background-color 0.4s ease;
+    width: 120px; /* Adjust width for better spacing */
+    height: 120px; /* Adjust height for better spacing */
+}
+
+.skill-item img {
+    width: 60px; /* Increase size of favicons */
+    height: 60px; /* Increase size of favicons */
+    margin-right: 10px;
+}
+
+.skill-item p {
+    font-size: 2rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Hover Effect */
+.skill-item:hover {
+    transform: scale(1.1);
+    background-color: rgba(0, 188, 212, 0.2); /* Add subtle background change */
+}
+
+
+
+/* Text Styles */
+.skillTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0d0c0c;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease-out;
+    text-align:center;
 }
 
 .skillDesc {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #34495e;
+    font-size: 2rem;
+    color: #2c2929;
+    margin-bottom: 30px;
     max-width: 51rem;
-    margin: 0 auto;
     padding: 0 2rem;
     line-height: 1.6;
-    animation: fadeIn 2s ease-out 0.5s;
+    text-align: center;
 }
 
+/* Skill Bars */
 .skillBars {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
     justify-content: center;
-    margin-top: 2rem;
+    gap: 40px; /* Add space between skill bars */
 }
 
 .skillBar {
     position: relative;
-    width: 350px;
-    height: 200px;
-    padding: 1.5rem 2rem;
-    background: #3498db;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-    color: #fff;
-    overflow: hidden;
+    width: 600px;
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 2s ease-out 1s;
 }
@@ -92,62 +149,132 @@ body {
 }
 
 .skillBarImg {
-    object-fit: cover;
-    height: 3rem;
-    width: 3rem;
-    margin-right: 2rem;
-    z-index: 2;
+    width: 80px;
+    height: 80px;
+    margin-right: 15px;
 }
 
 .skillBarText {
     flex: 1;
-    position: relative;
-    z-index: 2;
 }
 
 .skillBarText h2 {
     font-size: 1.5rem;
     font-weight: 600;
-    color: #fff;
+    color: #333;
     margin: 0 0 0.5rem;
 }
 
 .skillBarText p {
-    font-size: 0.8rem;
-    font-weight: 200;
-    color: #ecf0f1;
+    font-size: 1rem; /* Adjust font size for better readability */
+    font-weight: 400;
+    color: #f04f4a;
     margin: 0;
+    line-height: 1.5; /* Improve line spacing for readability */
 }
 
+/* Media Queries for Responsiveness */
 @media screen and (max-width: 720px) {
     .skillBarText p {
-        font-size: 2vw;
+        font-size: 1.5rem; /* Adjust font size */
     }
 }
 
 @media screen and (max-width: 480px) {
     .skillBarText p {
-        font-size: 3vw;
+        font-size: 1.2rem; /* Adjust font size */
     }
     .skillBarImg {
-        height: 2.25rem;
-        width: 2.25rem;
+        width: 45px;
+        height: 45px;
     }
     .skillBarText h2 {
-        font-size: 5vw;
+        font-size: 1.2rem; /* Adjust font size */
     }
 }
 
-  
-  @keyframes moveIcon {
-    0% {
-      transform: translateY(0) rotate(0deg);
-    }
-    50% {
-      transform: translateY(-20px) rotate(10deg);
-    }
-    100% {
-      transform: translateY(0) rotate(0deg);
-    }
-  }
-  
+/* Additional Sections */
+.categoryFilters {
+    margin-bottom: 30px;
+}
+
+.categoryButton {
+    background: #00bcd4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.categoryButton.active,
+.categoryButton:hover {
+    background: #018b8e;
+}
+
+.progressWrapper {
+    background: #eee;
+    border-radius: 5px;
+    height: 8px;
+    margin-top: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.progressBar {
+    background: #00bcd4;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Tools Icons, Testimonials, Achievements */
+.toolsIcons,
+.testimonials,
+.achievements {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.toolIconWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+
+.toolIcon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toolIcon:hover {
+    transform: scale(1.2);
+}
+
+.toolName {
+    font-size: 2rem;
+    color: #201e1e;
+    margin: 5px;
+}
+
+
