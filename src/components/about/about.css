@@ -130,100 +130,12 @@
 /* Info Grid Styling */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 2fr));
     gap: 2rem;
     max-width: 90%;
     margin: 0 auto;
 }
 
-/* Info Card Styling */
-.info-card {
-    background-color: #ffffff;
-    color: #333333;
-    padding: 2rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    transition: transform 0.5s ease, box-shadow 0.3s ease;
-}
-
-.info-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-/* Education Info Container Styling */
-.education-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    text-align: left; /* Align text to left for better readability */
-}
-
-.education-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1rem;
-    border-radius: 0.75rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    color: #ac3232;
-    font-weight: bold;
-    text-align: left; /* Align text to left for better readability */
-}
-
-/* Additional Info Styling */
-.additional-info {
-    margin-top: 3rem;
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 2rem;
-    line-height: 1.6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Location Icon Styling */
-.location-icon {
-    vertical-align: middle;
-    margin-right: 0.5rem;
-}
-
-/* Custom Bullet Points */
-ul {
-    list-style-type: none; /* Remove default bullets */
-    padding-left: 0;
-    margin: 4px;
-    color: #b61717;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-ul li {
-    position: relative;
-    padding-left: 2rem; /* Space for custom bullet */
-    margin-bottom: 1rem;
-}
-
-ul li::before {
-    content: '➤'; /* Unicode character for a stylish bullet */
-    position: absolute;
-    left: 0;
-    color: #1e3a8a; /* Color for the bullet */
-    font-size: 1.5rem; /* Size of the bullet */
-    line-height: 1; /* Align with text */
-}
-
-/* Keyframes for Pulse Animation */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
-}
-
-/* Keyframes for Fade In Animation */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
 /* Info Card Styling */
 .info-card {
     background-color: #ffffff;
@@ -278,4 +190,148 @@ ul li::before {
 .info-card p:nth-child(5) {
     font-weight: bold;
     color: #2563eb; /* Blue color for emphasis */
+}
+
+/* Education Info Container Styling */
+.education-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left; /* Align text to left for better readability */
+}
+
+.education-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ac3232;
+    font-weight: bold;
+    text-align: left; /* Align text to left for better readability */
+}
+
+/* Additional Info Styling */
+.additional-info {
+    margin-top: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Location Icon Styling */
+.location-icon {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/* Custom Bullet Points */
+ul {
+    list-style-type: none; /* Remove default bullets */
+    padding-left: 0;
+    margin: 4px;
+    color: #b61717;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+ul li {
+    position: relative;
+    padding-left: 2rem; /* Space for custom bullet */
+    margin-bottom: 1rem;
+}
+
+ul li::before {
+    content: '➤'; /* Unicode character for a stylish bullet */
+    position: absolute;
+    left: 0;
+    color: #1e3a8a; /* Color for the bullet */
+    font-size: 1.5rem; /* Size of the bullet */
+    line-height: 1; /* Align with text */
+}
+
+/* Keyframes for Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Keyframes for Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .about-container {
+        padding: 2rem;
+    }
+    .name {
+        font-size: 3rem;
+    }
+    .title {
+        font-size: 1.25rem;
+    }
+    .description {
+        font-size: 1.125rem;
+        max-width: 100%;
+    }
+    .info-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 2rem;
+    }
+    .profile-pic {
+        width: 10rem;
+        height: 10rem;
+    }
+    .name {
+        font-size: 2.5rem;
+    }
+    .title {
+        font-size: 1rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .social-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-pic {
+        width: 8rem;
+        height: 8rem;
+    }
+    .name {
+        font-size: 2rem;
+    }
+    .title {
+        font-size: 0.875rem;
+    }
+    .description {
+        font-size: 0.875rem;
+    }
+    .social-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+    }
+    ul {
+        font-size: 1rem;
+    }
 }

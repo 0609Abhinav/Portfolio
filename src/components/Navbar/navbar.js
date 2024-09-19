@@ -3,7 +3,7 @@ import './navbar.css';
 import logo from "../../assets/logo.png";
 import { Link } from 'react-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import {  faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -33,10 +33,6 @@ const Navbar = () => {
           <Link to='contact' smooth={true} duration={500} className='menuItem' onClick={toggleMenu}>
             Contact
           </Link>
-          <button className='contactBtn'>
-            <FontAwesomeIcon icon={faEnvelope} className='contactIcon' />
-            Contact me
-          </button>
         </div>
       </div>
     </nav>

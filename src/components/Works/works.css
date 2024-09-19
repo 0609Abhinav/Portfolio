@@ -126,7 +126,7 @@
 }
 
 .modalContent {
-   background: white;
+   background: rgb(98, 3, 3);
    padding: 20px;
    border-radius: 10px;
    max-width: 500px;
@@ -162,5 +162,20 @@
 }
 
 .closeBtn:hover {
+   background-color: #0056b3;
+}
+.githubLink {
+   display: inline-block;
+   margin-top: 20px;
+   padding: 10px 20px;
+   background-color: #007BFF;
+   color: white;
+   text-decoration: none;
+   border-radius: 5px;
+   font-size: 1rem;
+   transition: background-color 0.3s ease;
+}
+
+.githubLink:hover {
    background-color: #0056b3;
 }

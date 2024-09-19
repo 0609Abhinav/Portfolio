@@ -87,6 +87,9 @@ const Works = () => {
                     <div className="modalContent" onClick={(e) => e.stopPropagation()}>
                         <h3>{selectedProject.title}</h3>
                         <p>{selectedProject.description}</p>
+                        <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className="githubLink">
+                            View on GitHub
+                        </a>
                         <button className="closeBtn" onClick={closeModal}>Close</button>
                     </div>
                 </div>
