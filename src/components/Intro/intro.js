@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import computerIcon from './computer-icon.svg'; // Adjust path if needed
 import { faLinkedin, faGithub, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
+// Array of titles to display with typing effect
 const titles = [
   "Website Designer",
   "Frontend Developer",
@@ -18,6 +19,7 @@ const Intro = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [delay, setDelay] = useState(200);
 
+  // Typing effect logic
   useEffect(() => {
     const handleTyping = () => {
       const currentText = titles[currentTitle];
@@ -55,9 +57,18 @@ const Intro = () => {
           I am a skilled professional with experience in creating<br />
           visually appealing and user-friendly websites.
         </p>
+        
+        {/* Hire Me Button */}
         <Link to="contact" smooth={true} duration={500}>
           <button className="btn btn-primary">Hire Me</button>
         </Link>
+        
+        {/* Download Resume Button */}
+        <a href="/resume.pdf" download className="btn btn-secondary">
+          Get My CV
+        </a>
+
+        {/* Social Media Links */}
         <div className="socialLinks">
           <a href="https://www.linkedin.com/in/abhinav-tripathi-770224253/" target="_blank" rel="noopener noreferrer" className="socialLink">
             <FontAwesomeIcon icon={faLinkedin} />
@@ -75,6 +86,6 @@ const Intro = () => {
       </div>
     </section>
   );
-}
+};
 
 export default Intro;

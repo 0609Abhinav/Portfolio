@@ -1,25 +1,30 @@
 import React from "react";
+import { FaLinkedin, FaGithub, FaEnvelope } from "react-icons/fa"; // Add icons
 import './contact.css';
-import Walmart from '../../assets/walmart.png';
-import Facebook from '../../assets/facebook.png';
-import Adobe from '../../assets/adobe.png';
-import Microsoft from '../../assets/microsoft.png';
 
 const Contact = () => {
     return (
         <section className="contactPage">
-            <div id="clients">
-                <h1 className="contactPageTitle">My Clients</h1>
-                <p className="clientDesc">
-                    I have worked with a variety of clients, from small businesses to large enterprises.
+            {/* Let's Connect Section */}
+            <div id="letsConnect">
+                <h1 className="connectTitle">Let's Connect</h1>
+                <p className="connectDesc">
+                    I'm passionate about collaborating on exciting projects and bringing new ideas to life. Let's get in touch and build something awesome together!
                 </p>
-                <div className="clientImgs">
-                    <img src={Walmart} alt="Walmart" className="clientImg" />
-                    <img src={Facebook} alt="Facebook" className="clientImg" />
-                    <img src={Adobe} alt="Adobe" className="clientImg" />
-                    <img src={Microsoft} alt="Microsoft" className="clientImg" />
+                <div className="socialLinks">
+                    <a href="https://www.linkedin.com/in/abhinav-tripathi-770224253" target="_blank" rel="noopener noreferrer" className="socialLink">
+                        <FaLinkedin className="socialIcon" /> LinkedIn
+                    </a>
+                    <a href="https://github.com/0609Abhinav" target="_blank" rel="noopener noreferrer" className="socialLink">
+                        <FaGithub className="socialIcon" /> GitHub
+                    </a>
+                    <a href="mailto:abhinavtripathi6sep@gmail.com" className="socialLink">
+                        <FaEnvelope className="socialIcon" /> Email Me
+                    </a>
                 </div>
             </div>
+
+            {/* Contact Section */}
             <div id="contact">
                 <h2 className="contactTitle">Get in Touch</h2>
                 <form className="contactForm">
