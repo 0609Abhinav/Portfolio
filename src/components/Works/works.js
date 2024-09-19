@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import './works.css';
-import Portfolio1 from '../../assets/portfolio-1.png';
-import Portfolio2 from '../../assets/portfolio-2.png';
-import Portfolio3 from '../../assets/portfolio-3.png';
-import Portfolio4 from '../../assets/portfolio-4.png';
-import Portfolio5 from '../../assets/portfolio-5.png';
-import Portfolio6 from '../../assets/portfolio-6.png';
+import CollegeWebsite from '../../assets/college-website.jpg'; // Replace with correct path
+import CryptoTracker from '../../assets/crypto-currency.jpeg'; // Replace with correct path
+import MyPortfolio from '../../assets/portfolio.jpg'; // Replace with correct path
+import BookFromSeniors from '../../assets/book-from-senior.jpeg'; // Replace with correct path
+import PhoneTracking from '../../assets/phone-tracking.jpg'; // Replace with correct path
 import { FaHeart } from 'react-icons/fa';
 
 const Works = () => {
@@ -15,12 +14,11 @@ const Works = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const projects = [
-        { id: 1, src: Portfolio1, title: 'Project 1', description: 'Innovative web design and development.', category: 'Web Design' },
-        { id: 2, src: Portfolio2, title: 'Project 2', description: 'Engaging user interface and experience.', category: 'UI/UX' },
-        { id: 3, src: Portfolio3, title: 'Project 3', description: 'Responsive design for all devices.', category: 'App Development' },
-        { id: 4, src: Portfolio4, title: 'Project 4', description: 'Modern and clean aesthetics.', category: 'Web Design' },
-        { id: 5, src: Portfolio5, title: 'Project 5', description: 'Custom solutions for unique needs.', category: 'App Development' },
-        { id: 6, src: Portfolio6, title: 'Project 6', description: 'Exceptional attention to detail.', category: 'UI/UX' },
+        { id: 1, src: CollegeWebsite, title: 'College Website', description: 'A comprehensive website for college management and student engagement.', category: 'Web Design', githubLink: 'https://github.com/0609Abhinav/College_Website' },
+        { id: 2, src: CryptoTracker, title: 'Crypto Tracker', description: 'An application for tracking cryptocurrency prices and trends.', category: 'App Development', githubLink: 'https://github.com/0609Abhinav/Crypto-Tracker' },
+        { id: 3, src: MyPortfolio, title: 'My Portfolio', description: 'A personal portfolio showcasing various projects and skills.', category: 'Web Design', githubLink: 'https://github.com/0609Abhinav/Portfolio' },
+        { id: 4, src: BookFromSeniors, title: 'Book from Seniors', description: 'A digital library for accessing books from seniors.', category: 'UI/UX', githubLink: 'https://github.com/0609Abhinav/Online-Book-Store' },
+        { id: 5, src: PhoneTracking, title: 'Phone Tracking', description: 'A tool for tracking and managing phone locations and activities.', category: 'App Development', githubLink: 'https://github.com/yourusername/phone-tracking' }
     ];
 
     const categories = ['All', 'Web Design', 'App Development', 'UI/UX'];

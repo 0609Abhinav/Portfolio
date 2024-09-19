@@ -134,6 +134,23 @@
    text-align: center;
 }
 
+.githubLink {
+   display: inline-block;
+   margin-top: 15px;
+   padding: 10px 20px;
+   background-color: #333;
+   color: white;
+   text-decoration: none;
+   border-radius: 5px;
+   font-size: 1rem;
+   cursor: pointer;
+   transition: background-color 0.3s ease;
+}
+
+.githubLink:hover {
+   background-color: #555;
+}
+
 .closeBtn {
    margin-top: 20px;
    padding: 10px 20px;
