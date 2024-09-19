@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import './works.css';
-import CollegeWebsite from '../../assets/college-website.jpg'; // Replace with correct path
-import CryptoTracker from '../../assets/crypto-currency.jpeg'; // Replace with correct path
-import MyPortfolio from '../../assets/portfolio.jpg'; // Replace with correct path
-import BookFromSeniors from '../../assets/book-from-senior.jpeg'; // Replace with correct path
-import PhoneTracking from '../../assets/phone-tracking.jpg'; // Replace with correct path
+import './works.css'; // Make sure this includes the updated CSS for categories
+import CollegeWebsite from '../../assets/college-website.jpg';
+import CryptoTracker from '../../assets/crypto-currency.jpeg';
+import MyPortfolio from '../../assets/portfolio.jpg';
+import BookFromSeniors from '../../assets/book-from-senior.jpeg';
+import PhoneTracking from '../../assets/phone-tracking.jpg';
 import { FaHeart } from 'react-icons/fa';
 
 const Works = () => {
@@ -26,6 +26,8 @@ const Works = () => {
     const filteredProjects = projects.filter(project => 
         selectedCategory === 'All' || project.category === selectedCategory
     );
+
+    const projectsToShow = showAll ? filteredProjects : filteredProjects.slice(0, 3);
 
     const toggleFavorite = (id) => {
         setFavorites(prev =>
@@ -55,13 +57,13 @@ const Works = () => {
                     ))}
                 </div>
                 <div className="worksImgs">
-                    {filteredProjects.slice(0, showAll ? filteredProjects.length : 3).map(project => (
+                    {projectsToShow.map(project => (
                         <div 
                             key={project.id} 
-                            className="worksImgWrapper" 
+                            className="worksImgWrapper"
                             onClick={() => openModal(project)}
                         >
-                            <img src={project.src} alt={project.title} className="worksImg"/>
+                            <img src={project.src} alt={project.title} className="worksImg" />
                             <div className="worksOverlay">
                                 <div className="worksInfo">
                                     <h3>{project.title}</h3>
@@ -69,7 +71,7 @@ const Works = () => {
                                     <FaHeart 
                                         className={`favoriteIcon ${favorites.includes(project.id) ? 'favorite' : ''}`} 
                                         onClick={(e) => {
-                                            e.stopPropagation();
+                                            e.stopPropagation(); 
                                             toggleFavorite(project.id);
                                         }} 
                                     />
@@ -85,11 +87,10 @@ const Works = () => {
             {selectedProject && (
                 <div className="modal" onClick={closeModal}>
                     <div className="modalContent" onClick={(e) => e.stopPropagation()}>
-                        <h3>{selectedProject.title}</h3>
+                        <h2>{selectedProject.title}</h2>
+                        <img src={selectedProject.src} alt={selectedProject.title} style={{ width: '100%', height: 'auto', borderRadius: '8px' }} />
                         <p>{selectedProject.description}</p>
-                        <a href={selectedProject.githubLink} target="_blank" rel="noopener noreferrer" className="githubLink">
-                            View on GitHub
-                        </a>
+                        <a href={selectedProject.githubLink} className="githubLink" target="_blank" rel="noopener noreferrer">View on GitHub</a>
                         <button className="closeBtn" onClick={closeModal}>Close</button>
                     </div>
                 </div>

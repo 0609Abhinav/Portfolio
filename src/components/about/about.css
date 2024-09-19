@@ -7,14 +7,14 @@
     background: radial-gradient(circle, rgba(0, 188, 212, 0.2), rgba(0, 188, 212, 0.6)), #1a1a2e;
     color: #f1f1f1;
     position: relative;
-    overflow: hidden; /* Hide overflow to avoid any issues with extended content */
-    animation: fadeIn 1s; /* Ensure you define this keyframe if not already present */
+    overflow: hidden;
+    animation: fadeIn 1s;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the section */
 }
 
 /* Container Styling */
 .about-container {
-    max-width: 1200px;
-    margin: 0 auto;
     text-align: center;
     position: relative;
     z-index: 1;
@@ -70,7 +70,7 @@
 /* Social Links Container */
 .social-links {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap; /* Wrap links on smaller screens */
     gap: 1.5rem;
     justify-content: center;
     margin-bottom: 3rem;
@@ -80,14 +80,16 @@
 .social-link {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Center align text and icons */
     gap: 1rem;
     padding: 1rem 1.5rem;
     border-radius: 0.5rem;
-    font-size: 1.25rem; /* Adjusted size for text */
+    font-size: 1.25rem;
     color: white;
     text-decoration: none;
     transition: background-color 0.3s ease, transform 0.3s ease;
+    max-width: 200px; /* Limit width for better appearance */
+    text-align: center; /* Center text inside link */
 }
 
 .social-link:hover {
@@ -130,7 +132,7 @@
 /* Info Grid Styling */
 .info-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
     gap: 2rem;
     max-width: 90%;
     margin: 0 auto;
@@ -157,9 +159,9 @@
 .info-card h3 {
     font-size: 2rem;
     font-weight: 600;
-    color: #1e40af; /* Blue color for header */
+    color: #1e40af;
     margin-bottom: 1.5rem;
-    border-bottom: 2px solid #1e40af; /* Bottom border for header */
+    border-bottom: 2px solid #1e40af;
     padding-bottom: 0.5rem;
 }
 
@@ -168,28 +170,28 @@
     font-size: 1.125rem;
     line-height: 1.6;
     margin-bottom: 1rem;
-    color: #333333; /* Dark text color for readability */
+    color: #333333;
 }
 
 /* Differentiating Project Text */
 .info-card p:nth-child(2) {
     font-weight: bold;
-    color: #10b981; /* Green color for emphasis */
+    color: #10b981;
 }
 
 .info-card p:nth-child(3) {
     font-weight: bold;
-    color: #f97316; /* Orange color for emphasis */
+    color: #f97316;
 }
 
 .info-card p:nth-child(4) {
     font-weight: bold;
-    color: #4b5563; /* Gray color for emphasis */
+    color: #4b5563;
 }
 
 .info-card p:nth-child(5) {
     font-weight: bold;
-    color: #2563eb; /* Blue color for emphasis */
+    color: #2563eb;
 }
 
 /* Education Info Container Styling */
@@ -197,7 +199,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    text-align: left; /* Align text to left for better readability */
+    text-align: left;
 }
 
 .education-item {
@@ -207,7 +209,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     color: #ac3232;
     font-weight: bold;
-    text-align: left; /* Align text to left for better readability */
+    text-align: left;
 }
 
 /* Additional Info Styling */
@@ -229,7 +231,7 @@
 
 /* Custom Bullet Points */
 ul {
-    list-style-type: none; /* Remove default bullets */
+    list-style-type: none;
     padding-left: 0;
     margin: 4px;
     color: #b61717;
@@ -240,17 +242,17 @@ ul {
 
 ul li {
     position: relative;
-    padding-left: 2rem; /* Space for custom bullet */
+    padding-left: 2rem;
     margin-bottom: 1rem;
 }
 
 ul li::before {
-    content: '➤'; /* Unicode character for a stylish bullet */
+    content: '➤';
     position: absolute;
     left: 0;
-    color: #1e3a8a; /* Color for the bullet */
-    font-size: 1.5rem; /* Size of the bullet */
-    line-height: 1; /* Align with text */
+    color: #1e3a8a;
+    font-size: 1.5rem;
+    line-height: 1;
 }
 
 /* Keyframes for Pulse Animation */
@@ -308,6 +310,11 @@ ul li::before {
         flex-wrap: wrap;
         gap: 1rem;
     }
+    .social-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        max-width: none; /* Remove width restriction for smaller screens */
+    }
     .info-grid {
         grid-template-columns: 1fr;
     }
@@ -328,10 +335,7 @@ ul li::before {
         font-size: 0.875rem;
     }
     .social-link {
-        font-size: 1rem;
-        padding: 0.5rem 1rem;
-    }
-    ul {
-        font-size: 1rem;
+        font-size: 0.875rem;
+        padding: 0.5rem;
     }
 }
