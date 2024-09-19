@@ -1,0 +1,341 @@
+/* About Section Styling */
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem;
+    background: radial-gradient(circle, rgba(0, 188, 212, 0.2), rgba(0, 188, 212, 0.6)), #1a1a2e;
+    color: #f1f1f1;
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 1s;
+    max-width: 1200px;
+    margin: 0 auto; /* Center the section */
+}
+
+/* Container Styling */
+.about-container {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* Profile Picture Styling */
+.profile-pic {
+    width: 12rem;
+    height: 12rem;
+    margin-bottom: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #ffffff;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Name Styling */
+.name {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    animation: pulse 1s infinite;
+}
+
+/* Title Styling */
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #e5e7eb;
+}
+
+/* Description Styling */
+.description {
+    font-size: 1.25rem;
+    max-width: 60rem;
+    margin: 0 auto 2.5rem;
+    line-height: 1.6;
+}
+
+/* Social Links Container */
+.social-links {
+    display: flex;
+    flex-wrap: wrap; /* Wrap links on smaller screens */
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+/* Social Link Styling */
+.social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Center align text and icons */
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    max-width: 200px; /* Limit width for better appearance */
+    text-align: center; /* Center text inside link */
+}
+
+.social-link:hover {
+    transform: scale(1.05);
+}
+
+/* Individual Social Link Backgrounds */
+.linkedin {
+    background-color: #1e40af;
+}
+
+.linkedin:hover {
+    background-color: #1e3a8a;
+}
+
+.email {
+    background-color: #10b981;
+}
+
+.email:hover {
+    background-color: #059669;
+}
+
+.phone {
+    background-color: #f97316;
+}
+
+.phone:hover {
+    background-color: #ea580c;
+}
+
+.github {
+    background-color: #4b5563;
+}
+
+.github:hover {
+    background-color: #374151;
+}
+
+/* Info Grid Styling */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 2rem;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+/* Info Card Styling */
+.info-card {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 2rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+/* Info Card Hover Effect */
+.info-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Header Styling */
+.info-card h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1e40af;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #1e40af;
+    padding-bottom: 0.5rem;
+}
+
+/* Project Text Styling */
+.info-card p {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #333333;
+}
+
+/* Differentiating Project Text */
+.info-card p:nth-child(2) {
+    font-weight: bold;
+    color: #10b981;
+}
+
+.info-card p:nth-child(3) {
+    font-weight: bold;
+    color: #f97316;
+}
+
+.info-card p:nth-child(4) {
+    font-weight: bold;
+    color: #4b5563;
+}
+
+.info-card p:nth-child(5) {
+    font-weight: bold;
+    color: #2563eb;
+}
+
+/* Education Info Container Styling */
+.education-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: left;
+}
+
+.education-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: #ac3232;
+    font-weight: bold;
+    text-align: left;
+}
+
+/* Additional Info Styling */
+.additional-info {
+    margin-top: 3rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Location Icon Styling */
+.location-icon {
+    vertical-align: middle;
+    margin-right: 0.5rem;
+}
+
+/* Custom Bullet Points */
+ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 4px;
+    color: #b61717;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+ul li {
+    position: relative;
+    padding-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+ul li::before {
+    content: '➤';
+    position: absolute;
+    left: 0;
+    color: #1e3a8a;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+/* Keyframes for Pulse Animation */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Keyframes for Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Responsive Styles */
+@media (max-width: 1200px) {
+    .about-container {
+        padding: 2rem;
+    }
+    .name {
+        font-size: 3rem;
+    }
+    .title {
+        font-size: 1.25rem;
+    }
+    .description {
+        font-size: 1.125rem;
+        max-width: 100%;
+    }
+    .info-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: 2rem;
+    }
+    .profile-pic {
+        width: 10rem;
+        height: 10rem;
+    }
+    .name {
+        font-size: 2.5rem;
+    }
+    .title {
+        font-size: 1rem;
+    }
+    .description {
+        font-size: 1rem;
+    }
+    .social-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    .social-link {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        max-width: none; /* Remove width restriction for smaller screens */
+    }
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-pic {
+        width: 8rem;
+        height: 8rem;
+    }
+    .name {
+        font-size: 2rem;
+    }
+    .title {
+        font-size: 0.875rem;
+    }
+    .description {
+        font-size: 0.875rem;
+    }
+    .social-link {
+        font-size: 0.875rem;
+        padding: 0.5rem;
+    }
+}
