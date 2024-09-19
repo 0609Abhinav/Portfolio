@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import computerIcon from './computer-icon.svg'; // Adjust path if needed
 import { faLinkedin, faGithub, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { FaEnvelope } from "react-icons/fa";
 
 // Array of titles to display with typing effect
 const titles = [
@@ -45,6 +46,73 @@ const Intro = () => {
     return () => clearTimeout(typingInterval);
   }, [typing, isDeleting, currentTitle, delay]);
 
+  // Inline style for social media icons
+  const socialLinkStyle = {
+    fontSize: '3rem', // Increase size for better visibility
+    color: 'white',
+    transition: 'transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
+    margin: '0 20px', // Adjust spacing between icons
+    padding: '10px', // Add padding to create space around the icon
+    borderRadius: '50%', // Circular background
+    background: 'rgba(0, 0, 0, 0.2)', // Subtle background for contrast
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)' // Shadow for depth
+  };
+
+  // Hover styles for each social media icon
+  const socialLinkHoverStyles = {
+    linkedin: { color: '#0a66c2' }, // LinkedIn color
+    github: { color: '#333' }, // GitHub color
+    instagram: { color: '#c13584' }, // Instagram color
+    facebook: { color: '#1877f2' } // Facebook color
+  };
+
+  // Function to handle hover
+  const handleMouseOver = (e, platform) => {
+    e.currentTarget.style.color = socialLinkHoverStyles[platform].color;
+  };
+
+  // Function to handle mouse out
+  const handleMouseOut = (e) => {
+    e.currentTarget.style.color = socialLinkStyle.color;
+  };
+
+  // Inline styles for buttons
+  const btnPrimaryStyle = {
+    backgroundColor: '#ff5722', // New primary background color
+    color: 'white',
+    fontSize: '1.2rem',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    border: 'none',
+    cursor: 'pointer',
+    outline: 'none',
+    transition: 'background 0.3s ease, transform 0.3s ease',
+    margin: '0 10px' // Added margin for spacing between buttons
+  };
+
+  const btnPrimaryHoverStyle = {
+    backgroundColor: '#e64a19', // New primary hover color
+    transform: 'scale(1.05)'
+  };
+
+  const btnSecondaryStyle = {
+    backgroundColor: '#4caf50', // New secondary background color
+    color: 'white',
+    fontSize: '1.2rem',
+    padding: '10px 20px',
+    borderRadius: '5px',
+    border: 'none',
+    cursor: 'pointer',
+    outline: 'none',
+    transition: 'background 0.3s ease, transform 0.3s ease',
+    margin: '0 10px' // Added margin for spacing between buttons
+  };
+
+  const btnSecondaryHoverStyle = {
+    backgroundColor: '#388e3c', // New secondary hover color
+    transform: 'scale(1.05)'
+  };
+
   return (
     <section id="intro" className="introSection" style={{ backgroundImage: `url(${computerIcon})` }}>
       <div className="introContent">
@@ -60,28 +128,71 @@ const Intro = () => {
         
         {/* Hire Me Button */}
         <Link to="contact" smooth={true} duration={500}>
-          <button className="btn btn-primary">Hire Me</button>
+          <button
+            style={btnPrimaryStyle}
+            onMouseOver={(e) => Object.assign(e.currentTarget.style, btnPrimaryHoverStyle)}
+            onMouseOut={(e) => Object.assign(e.currentTarget.style, btnPrimaryStyle)}
+          >
+            Hire Me
+          </button>
         </Link>
         
         {/* Download Resume Button */}
-        <a href="/resume.pdf" download className="btn btn-secondary">
+        <a
+          href="/resume.pdf"
+          download
+          style={btnSecondaryStyle}
+          onMouseOver={(e) => Object.assign(e.currentTarget.style, btnSecondaryHoverStyle)}
+          onMouseOut={(e) => Object.assign(e.currentTarget.style, btnSecondaryStyle)}
+        >
           Get My CV
         </a>
 
         {/* Social Media Links */}
-        <div className="socialLinks">
-          <a href="https://www.linkedin.com/in/abhinav-tripathi-770224253/" target="_blank" rel="noopener noreferrer" className="socialLink">
+        <div className="socialLinks" style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+          <a
+            href="https://www.linkedin.com/in/abhinav-tripathi-770224253/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={socialLinkStyle}
+            onMouseOver={(e) => handleMouseOver(e, 'linkedin')}
+            onMouseOut={handleMouseOut}
+          >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
-          <a href="https://github.com/0609Abhinav" target="_blank" rel="noopener noreferrer" className="socialLink">
+          <a
+            href="https://github.com/0609Abhinav"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={socialLinkStyle}
+            onMouseOver={(e) => handleMouseOver(e, 'github')}
+            onMouseOut={handleMouseOut}
+          >
             <FontAwesomeIcon icon={faGithub} />
           </a>
-          <a href="https://www.instagram.com/_abhinavtripathi/" target="_blank" rel="noopener noreferrer" className="socialLink">
+          <a
+            href="https://www.instagram.com/_abhinavtripathi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={socialLinkStyle}
+            onMouseOver={(e) => handleMouseOver(e, 'instagram')}
+            onMouseOut={handleMouseOut}
+          >
             <FontAwesomeIcon icon={faInstagram} />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="socialLink">
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={socialLinkStyle}
+            onMouseOver={(e) => handleMouseOver(e, 'facebook')}
+            onMouseOut={handleMouseOut}
+          >
             <FontAwesomeIcon icon={faFacebook} />
           </a>
+          <a href="mailto:abhinavtripathi6sep@gmail.com" className="socialLink">
+                        <FaEnvelope className="socialIcon" /> Email Me
+                    </a>
         </div>
       </div>
     </section>

@@ -61,11 +61,12 @@ const Skills = () => {
             <div className="skillsContent">
                 <div style={{ textAlign: 'center' }}>
                     <span className="skillTitle" style={{ display: 'block', fontSize: '2rem', fontWeight: 'bold' }}>What I Do</span>
-                    <div style={{ textAlign: 'center' }}>
-                    <p className="skillDesc" style={{ margin: '1rem 0', fontSize: '1.2rem', lineHeight: '1.5' }}>
-                        As a fresher in the field of web development and design, I bring enthusiasm and a keen eye for detail to every project. Here’s a glimpse into my skill set:
-                    </p>
-                    </div>
+                    <div className="skillDescContainer">
+    <p className="skillDesc">
+        As a fresher in the field of web development and design, I bring enthusiasm and a keen eye for detail to every project. Here’s a glimpse into my skill set:
+    </p>
+</div>
+
                 </div>
                 
                 <div className="categoryFilters">

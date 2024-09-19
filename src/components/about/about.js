@@ -34,8 +34,17 @@ const About = () => {
         <div className="info-grid">
           <div className="info-card">
             <h3 className="text-2xl font-semibold mb-3">Education</h3>
-            <p>Bachelor of Technology in Information Technology | <br/>Dr. A.P.J. Abdul Kalam Technical University, <br/>Graduating June 2025</p>
-            <p className="mt-4">Diploma in Computer Science and Engineering | <br/>Board of Technical Education Uttar Pradesh, <br/>June 2022</p>
+            <div className="education-info">
+              <div className="education-item">
+                <p>Bachelor of Technology in Information Technology | <br />Dr. A.P.J. Abdul Kalam Technical University, <br />Graduating June 2025</p>
+              </div>
+              <div className="education-item">
+                <p>Diploma in Computer Science and Engineering | <br />Board of Technical Education Uttar Pradesh, <br />June 2022</p>
+              </div>
+              <div className="education-item">
+                <p>10th Grade | Maharshi Patanjali Vidya Mandir | <br />CBSE Board, 2016</p>
+              </div>
+            </div>
           </div>
 
           <div className="info-card">
@@ -70,7 +79,6 @@ const About = () => {
 
         <div className="additional-info">
           <p><FaLocationArrow className="location-icon" /> Allahabad, India</p>
-
         </div>
       </div>
     </section>

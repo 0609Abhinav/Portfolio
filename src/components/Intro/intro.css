@@ -79,15 +79,21 @@
 }
 
 .socialLink {
-  font-size: 3rem; /* Base size for icons */
+  font-size: 4rem; /* Increase size for more impact */
   color: white;
-  transition: transform 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   margin: 0 15px; /* Spacing between icons */
+  padding: 10px; /* Add padding to create space around the icon */
+  border-radius: 50%; /* Create circular background */
+  background: rgba(0, 0, 0, 0.2); /* Subtle background for contrast */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
 }
 
 .socialLink:hover {
   color: #00bcd4;
-  transform: scale(1.2); /* Slightly larger scaling on hover */
+  transform: scale(1.2); /* Larger scaling on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
+  background: rgba(0, 0, 0, 0.4); /* Darker background on hover */
 }
 
 @keyframes fadeIn {
