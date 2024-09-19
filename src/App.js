@@ -17,7 +17,7 @@ function App() {
       </Element>
 
       <Element name="about">
-        <About /> {/* Add About section */}
+        <About />
       </Element>
 
       <Element name="skills">
