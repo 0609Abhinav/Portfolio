@@ -1,3 +1,4 @@
+/* Default styles for larger screens */
 .introSection {
   position: relative;
   height: 100vh;
@@ -14,6 +15,7 @@
   text-align: center;
   z-index: 2;
   animation: fadeIn 2s ease-out;
+  max-width: 80%;
 }
 
 .hello {
@@ -57,7 +59,7 @@
   cursor: pointer;
   outline: none;
   transition: background 0.3s ease, transform 0.3s ease;
-  margin: 0 10px; /* Added margin for spacing between buttons */
+  margin: 0 10px;
 }
 
 .btn:hover {
@@ -68,34 +70,37 @@
 .buttonContainer {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 20px;
-  gap: 20px; /* Adds consistent space between buttons */
+  gap: 20px;
 }
 
 .socialLinks {
   margin-top: 20px;
-  display: flex; /* Ensure icons are in a row */
-  justify-content: center; /* Center the icons */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .socialLink {
-  font-size: 4rem; /* Increase size for more impact */
+  font-size: 4rem;
   color: white;
   transition: transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
-  margin: 0 15px; /* Spacing between icons */
-  padding: 10px; /* Add padding to create space around the icon */
-  border-radius: 50%; /* Create circular background */
-  background: rgba(0, 0, 0, 0.2); /* Subtle background for contrast */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+  margin: 0 15px;
+  padding: 10px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .socialLink:hover {
   color: #00bcd4;
-  transform: scale(1.2); /* Larger scaling on hover */
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5); /* Enhanced shadow on hover */
-  background: rgba(0, 0, 0, 0.4); /* Darker background on hover */
+  transform: scale(1.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
 }
 
+/* Keyframes */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -126,7 +131,8 @@
 }
 
 @keyframes blink-caret {
-  from, to {
+  from,
+  to {
     border-color: transparent;
   }
   50% {
@@ -134,17 +140,134 @@
   }
 }
 
-@keyframes animateBackground {
-  0% {
-    transform: scale(1);
-    opacity: 0.7;
+/* Responsive adjustments */
+@media only screen and (max-width: 768px) {
+  .hello, .introText {
+    font-size: 1.8rem;
   }
-  50% {
-    transform: scale(1.05);
-    opacity: 0.5;
+
+  .introPara {
+    font-size: 0.9rem;
   }
-  100% {
-    transform: scale(1);
-    opacity: 0.7;
+
+  .btn {
+    font-size: 0.85rem;
+    padding: 5px 12px;
+  }
+
+  .socialLink {
+    font-size: 2.2rem;
+    margin: 0 8px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .emailSection {
+    text-align: center;
+    margin-top: 30px; /* Ensure spacing between social icons and email button */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .introSection {
+    padding: 0 10px;
+  }
+
+  .hello, .introText {
+    font-size: 1.5rem;
+  }
+
+  .introPara {
+    font-size: 0.85rem;
+  }
+
+  .btn {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+
+  .socialLink {
+    font-size: 1.8rem;
+    margin: 0 6px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .introContent {
+    max-width: 90%;
+  }
+
+  .emailSection {
+    text-align: center;
+    margin-top: 20px; /* Spacing to push the email below icons */
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .introSection {
+    padding: 0 9px;
+  }
+
+  .hello, .introText {
+    font-size: 1rem;
+  }
+
+  .introPara {
+    font-size: 0.6rem;
+  }
+
+  .btn {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+  }
+
+  .socialLink {
+    font-size: 1.3rem;
+    margin: 0 4px;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .introContent {
+    max-width: 95%;
+  }
+
+}
+
+@media only screen and (max-width: 320px) {
+  .introSection {
+    padding: 0 2px;
+  }
+
+  .hello, .introText {
+    font-size: 1.1rem;
+  }
+
+  .introPara {
+    font-size: 0.7rem;
+  }
+
+  .btn {
+    font-size: 0.65rem;
+    padding: 4px 6px;
+  }
+
+  .socialLink {
+    font-size: 1.2rem;
+    margin: 0 2px;
+  }
+
+  .emailSection {
+    text-align: center;
+    margin-top: 15px;
   }
 }

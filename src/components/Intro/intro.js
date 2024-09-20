@@ -51,11 +51,11 @@ const Intro = () => {
     fontSize: '3rem', // Increase size for better visibility
     color: 'white',
     transition: 'transform 0.3s ease, color 0.3s ease, box-shadow 0.3s ease',
-    margin: '0 20px', // Adjust spacing between icons
-    padding: '10px', // Add padding to create space around the icon
-    borderRadius: '50%', // Circular background
+    margin: '0 100px', // Adjust spacing between icons
+    padding: '5px', // Add padding to create space around the icon
+    borderRadius: '90%', // Circular background
     background: 'rgba(0, 0, 0, 0.2)', // Subtle background for contrast
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)' // Shadow for depth
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.3)' // Shadow for depth
   };
 
   // Hover styles for each social media icon
