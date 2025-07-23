@@ -1,19 +1,69 @@
 import React from 'react';
 import { FaLinkedin, FaGithub, FaEnvelope, FaPhoneAlt, FaLocationArrow } from 'react-icons/fa';
 import profilePic from '../../assets/profile-pic.png';
-import './about.css'; // Import the updated CSS file
+import './about.css';
 
 const About = () => {
+  const education = [
+    {
+      title: 'Bachelor of Technology in Information Technology',
+      institution: 'Dr. A.P.J. Abdul Kalam Technical University',
+      year: 'July 2025',
+    },
+    {
+      title: 'Diploma in Computer Science and Engineering',
+      institution: 'Board of Technical Education Uttar Pradesh',
+      year: 'June 2022',
+    },
+    {
+      title: '10th Grade',
+      institution: 'Maharshi Patanjali Vidya Mandir, CBSE Board',
+      year: '2016',
+    },
+  ];
+
+  const projects = [
+    'College Website – Python, Django',
+    'Online Book Store – Python, Django',
+    'Digital Currency Tracker – MERN Stack',
+    'Portfolio Website – React.js',
+    'Photographer Website – WordPress',
+    'Spandan Event Website – HTML, CSS, JS',
+    'Smart-Ex Web App – React.js',
+    'AI Project – Python, Flask',
+  ];
+
+  const skills = [
+    'Programming: Python, JavaScript, PHP',
+    'Web Development: HTML, CSS, React.js, Node.js, WordPress',
+    'Databases: MongoDB, SQL',
+    'Cloud: AWS EC2, S3',
+    'Tools: Git, VS Code, Postman',
+  ];
+
+ const certifications = [
+  'Python with Django – Techpile',
+  'PHP – Acmegrade',
+  'MERN Stack – Shape My Skills',
+  'Digital Skills: AI – Accenture',
+  'Python Basic – HackerRank',
+  'Technology Job Simulation – Deloitte Australia (Forage)',
+  'Python Essentials 1 – Cisco'
+];
+
   return (
-    <section className="about-section">
+    <section className="about-section" id="about">
       <div className="about-container">
         <div className="profile-pic">
           <img src={profilePic} alt="Abhinav Tripathi" />
         </div>
         <h1 className="name">Abhinav Tripathi</h1>
-        <h2 className="title">Recent IT Graduate | MERN Stack Developer | Python Enthusiast</h2>
+        <h2 className="title">IT Graduate | MERN Stack Developer | Python Enthusiast</h2>
+
         <p className="description">
-          I’m a passionate web developer with experience in Python programming and MERN stack technologies (MongoDB, Express.js, React.js, Node.js). I specialize in creating responsive, user-centric web applications using modern technologies like HTML, CSS, JavaScript, and SQL. I also have foundational knowledge of AWS services like EC2 and S3, ready to contribute to dynamic IT teams.
+          Passionate full-stack developer with a strong foundation in Python, MERN stack, and modern web tools.
+          From building scalable web apps to crafting user-friendly WordPress sites, I merge creativity and logic to deliver standout digital experiences.
+          I’m also experienced with AWS (EC2, S3) and eager to contribute to innovative development teams.
         </p>
 
         <div className="social-links">
@@ -21,10 +71,10 @@ const About = () => {
             <FaLinkedin className="icon" /> LinkedIn
           </a>
           <a href="mailto:abhinavtripathi6sep@gmail.com" className="social-link email">
-            <FaEnvelope className="icon" /> Email Me
+            <FaEnvelope className="icon" /> Email
           </a>
           <a href="tel:9621854341" className="social-link phone">
-            <FaPhoneAlt className="icon" /> Call Me
+            <FaPhoneAlt className="icon" /> Phone
           </a>
           <a href="https://github.com/0609Abhinav" target="_blank" rel="noopener noreferrer" className="social-link github">
             <FaGithub className="icon" /> GitHub
@@ -33,46 +83,40 @@ const About = () => {
 
         <div className="info-grid">
           <div className="info-card">
-            <h3 className="text-2xl font-semibold mb-3">Education</h3>
-            <div className="education-info">
-              <div className="education-item">
-                <p>Bachelor of Technology in Information Technology | <br />Dr. A.P.J. Abdul Kalam Technical University, <br />Graduating June 2025</p>
+            <h3>Education</h3>
+            {education.map((edu, idx) => (
+              <div key={idx} className="education-item">
+                <p><strong>{edu.title}</strong><br />
+                  {edu.institution} <br />
+                  {edu.year}</p>
               </div>
-              <div className="education-item">
-                <p>Diploma in Computer Science and Engineering | <br />Board of Technical Education Uttar Pradesh, <br />June 2022</p>
-              </div>
-              <div className="education-item">
-                <p>10th Grade | Maharshi Patanjali Vidya Mandir | <br />CBSE Board, 2016</p>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="info-card">
-            <h3 className="text-2xl font-semibold mb-3">Projects</h3>
-            <p>College Website – Python, Django</p>
-            <p>Online Book Store – Python, Django</p>
-            <p>Digital Currency Tracker – MERN Stack</p>
-            <p>Portfolio Website – React.js</p>
-          </div>
-
-          <div className="info-card">
-            <h3 className="text-2xl font-semibold mb-3">Technical Skills</h3>
+            <h3>Projects</h3>
             <ul>
-              <li>Programming: Python, JavaScript, PHP</li>
-              <li>Web Development: HTML, CSS, React.js, Node.js</li>
-              <li>Databases: MongoDB, SQL</li>
-              <li>Cloud: AWS EC2, S3</li>
-              <li>Tools: Git, VS Code</li>
+              {projects.map((project, idx) => (
+                <li key={idx}>{project}</li>
+              ))}
             </ul>
           </div>
 
           <div className="info-card">
-            <h3 className="text-2xl font-semibold mb-3">Training & Certifications</h3>
+            <h3>Technical Skills</h3>
             <ul>
-              <li>Python with Django – Techpile</li>
-              <li>PHP – Acmegrade</li>
-              <li>MERN Stack – Shape My Skills</li>
-              <li>Digital Skills: AI – Accenture</li>
+              {skills.map((skill, idx) => (
+                <li key={idx}>{skill}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="info-card">
+            <h3>Certifications</h3>
+            <ul>
+              {certifications.map((cert, idx) => (
+                <li key={idx}>{cert}</li>
+              ))}
             </ul>
           </div>
         </div>

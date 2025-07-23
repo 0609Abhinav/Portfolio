@@ -20,7 +20,14 @@ const Skills = () => {
         { name: "App Design", image: AppDesign, description: "Designing mobile applications that offer a seamless user experience and intuitive navigation.", level: 70, category: 'Design' },
         { name: "Frontend Development", image: FrontendDev, description: "Building engaging and responsive front-end interfaces using HTML, CSS, and JavaScript.", level: 85, category: 'Development' },
         { name: "Website Development", image: WebDev, description: "Implementing robust and scalable web solutions with a focus on performance and security.", level: 80, category: 'Development' },
-        { name: "Fullstack Development", image: FullstackDev, description: "Developing end-to-end solutions encompassing both front-end and back-end technologies.", level: 65, category: 'Development' }
+        { name: "Fullstack Development", image: FullstackDev, description: "Developing end-to-end solutions encompassing both front-end and back-end technologies.", level: 65, category: 'Development' },
+        {
+            name: "WordPress Development",
+            image: "https://upload.wikimedia.org/wikipedia/commons/9/98/WordPress_blue_logo.svg",
+            description: "Building dynamic websites using WordPress, integrating themes, plugins, and custom functionality.",
+            level: 70,
+            category: 'Development'
+        }
     ];
 
     const toolsAndTechnologies = [
@@ -46,9 +53,10 @@ const Skills = () => {
         { name: "Anaconda", image: "https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/anaconda.svg", color: "#3A7E49" },
         { name: "REST API", icon: faCode, color: "#FF6F61" },
         { name: "MySQL Workbench", icon: faDatabase, color: "#00758F" },
+        { name: "WordPress", image: "https://cdn.jsdelivr.net/npm/simple-icons@v8/icons/wordpress.svg", color: "#21759B" }
     ];
 
-    const filteredSkills = skills.filter(skill => 
+    const filteredSkills = skills.filter(skill =>
         selectedCategory === 'All' || skill.category === selectedCategory
     );
 
@@ -62,17 +70,16 @@ const Skills = () => {
                 <div style={{ textAlign: 'center' }}>
                     <span className="skillTitle" style={{ display: 'block', fontSize: '2rem', fontWeight: 'bold' }}>What I Do</span>
                     <div className="skillDescContainer">
-    <p className="skillDesc">
-        As a fresher in the field of web development and design, I bring enthusiasm and a keen eye for detail to every project. Here’s a glimpse into my skill set:
-    </p>
-</div>
-
+                        <p className="skillDesc">
+                            As a fresher in the field of web development and design, I bring enthusiasm and a keen eye for detail to every project. Here’s a glimpse into my skill set:
+                        </p>
+                    </div>
                 </div>
-                
+
                 <div className="categoryFilters">
                     {categories.map(category => (
-                        <button 
-                            key={category} 
+                        <button
+                            key={category}
                             onClick={() => setSelectedCategory(category)}
                             className={`categoryButton ${selectedCategory === category ? 'active' : ''}`}
                         >
@@ -84,11 +91,11 @@ const Skills = () => {
                 <div className="skillBars">
                     {filteredSkills.map((skill, index) => (
                         <div key={index} className="skillBar">
-                            <img src={skill.image} alt={skill.name} className="skillBarImg"/>
+                            <img src={skill.image} alt={skill.name} className="skillBarImg" />
                             <div className="skillBarText">
                                 <h2>{skill.name}</h2>
                                 <p>{skill.description}</p>
-                                <a href={`/projects/${skill.name.toLowerCase().replace(/ /g, '-')}`} className="caseStudyLink">View Case Study</a>
+                               {/* <a href={`/projects/${skill.name.toLowerCase().replace(/ /g, '-')}`} className="caseStudyLink">View Case Study</a> */}
                                 <div className="progressWrapper">
                                     <div className="progressBar" style={{ width: `${skill.level}%` }}></div>
                                 </div>
@@ -100,7 +107,7 @@ const Skills = () => {
                 {/* Tools & Technologies Sections */}
                 <section id='tools-technologies'>
                     <span className="sectionTitle">🛠️ Tools & Technologies</span>
-                    
+
                     <section id='frontend-expertise'>
                         <span className="sectionTitle">💻 Frontend (Expertise)</span>
                         <div className="toolsIcons">
@@ -116,7 +123,7 @@ const Skills = () => {
                     <section id='backend'>
                         <span className="sectionTitle">🌐 Backend</span>
                         <div className="toolsIcons">
-                            {toolsAndTechnologies.filter(tool => ["Node.js", "Express.js", "MongoDB", "MySQL", "Python", "Django", "GraphQL", "JWT"].includes(tool.name)).map(tool => (
+                            {toolsAndTechnologies.filter(tool => ["Node.js", "Express.js", "MongoDB", "MySQL", "Python", "Django", "GraphQL", "JWT", "WordPress"].includes(tool.name)).map(tool => (
                                 <div key={tool.name} className="toolIconWrapper">
                                     <img src={tool.image} alt={tool.name} className="toolIcon" style={{ backgroundColor: tool.color }} />
                                     <span className="toolName">{tool.name}</span>

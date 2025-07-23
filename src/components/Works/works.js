@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import './works.css'; // Make sure this includes the updated CSS for categories
+import './works.css';
 import CollegeWebsite from '../../assets/college-website.jpg';
 import CryptoTracker from '../../assets/crypto-currency.jpeg';
 import MyPortfolio from '../../assets/portfolio.jpg';
 import BookFromSeniors from '../../assets/book-from-senior.jpeg';
 import PhoneTracking from '../../assets/phone-tracking.jpg';
+import Photographer from '../../assets/photographer.png';
+import RubiksCube from '../../assets/rubiks-cube.png';
+import SmartEx from '../../assets/smart-ex.png';
+import SpandanWebsite from '../../assets/spandan-website.png';
+import CNNPCA from '../../assets/ai-project.png'; // optional placeholder
 import { FaHeart } from 'react-icons/fa';
 
 const Works = () => {
@@ -14,16 +19,91 @@ const Works = () => {
     const [selectedCategory, setSelectedCategory] = useState('All');
 
     const projects = [
-        { id: 1, src: CollegeWebsite, title: 'College Website', description: 'A comprehensive website for college management and student engagement.', category: 'Web Design', githubLink: 'https://github.com/0609Abhinav/College_Website' },
-        { id: 2, src: CryptoTracker, title: 'Crypto Tracker', description: 'An application for tracking cryptocurrency prices and trends.', category: 'App Development', githubLink: 'https://github.com/0609Abhinav/Crypto-Tracker' },
-        { id: 3, src: MyPortfolio, title: 'My Portfolio', description: 'A personal portfolio showcasing various projects and skills.', category: 'Web Design', githubLink: 'https://github.com/0609Abhinav/Portfolio' },
-        { id: 4, src: BookFromSeniors, title: 'Book from Seniors', description: 'A digital library for accessing books from seniors.', category: 'UI/UX', githubLink: 'https://github.com/0609Abhinav/Online-Book-Store' },
-        { id: 5, src: PhoneTracking, title: 'Phone Tracking', description: 'A tool for tracking and managing phone locations and activities.', category: 'App Development', githubLink: 'https://github.com/yourusername/phone-tracking' }
+        {
+            id: 1,
+            src: CollegeWebsite,
+            title: 'College Website',
+            description: 'A comprehensive website for college management and student engagement.',
+            category: 'Web Design',
+            githubLink: 'https://github.com/0609Abhinav/College_Website'
+        },
+        {
+            id: 2,
+            src: CryptoTracker,
+            title: 'Crypto Tracker',
+            description: 'Track cryptocurrency prices and market trends.',
+            category: 'App Development',
+            githubLink: 'https://github.com/0609Abhinav/Crypto-Tracker'
+        },
+        {
+            id: 3,
+            src: MyPortfolio,
+            title: 'Portfolio',
+            description: 'A personal portfolio to showcase projects and skills.',
+            category: 'Web Design',
+            githubLink: 'https://github.com/0609Abhinav/Portfolio'
+        },
+        {
+            id: 4,
+            src: BookFromSeniors,
+            title: 'Book from Seniors',
+            description: 'A digital platform to share books among students.',
+            category: 'UI/UX',
+            githubLink: 'https://github.com/0609Abhinav/Online-Book-Store'
+        },
+        {
+            id: 5,
+            src: PhoneTracking,
+            title: 'Phone Tracking System',
+            description: 'A tool for monitoring and tracking device activity.',
+            category: 'App Development',
+            githubLink: 'https://github.com/0609Abhinav/phone-tracking'
+        },
+        {
+            id: 6,
+            src: RubiksCube,
+            title: 'Rubik\'s Cube Solver',
+            description: 'Solves the Rubik\'s Cube using AI and logic algorithms.',
+            category: 'AI/ML',
+            githubLink: 'https://github.com/0609Abhinav/Rubik-s-Cube'
+        },
+        {
+            id: 7,
+            src: SmartEx,
+            title: 'Smart-Ex',
+            description: 'An intelligent exam system for smart evaluations.',
+            category: 'Web Design',
+            githubLink: 'https://github.com/0609Abhinav/Smart-Ex'
+        },
+        {
+            id: 8,
+            src: Photographer,
+            title: 'Photographer Website',
+            description: 'A photography-themed responsive website template.',
+            category: 'Web Design',
+            githubLink: 'https://github.com/0609Abhinav/Photographer-master'
+        },
+        {
+            id: 9,
+            src: CNNPCA,
+            title: 'Hybrid CNN + PCA',
+            description: 'An AI model using CNN with PCA for dimensionality reduction.',
+            category: 'AI/ML',
+            githubLink: 'https://github.com/0609Abhinav/Hybrid_CNN_PCA_Full_Package'
+        },
+        {
+            id: 10,
+            src: SpandanWebsite,
+            title: 'Spandan Website',
+            description: 'A vibrant website designed for a college fest or cultural event.',
+            category: 'Web Design',
+            githubLink: 'https://github.com/0609Abhinav/spandan-website'
+        }
     ];
 
-    const categories = ['All', 'Web Design', 'App Development', 'UI/UX'];
+    const categories = ['All', 'Web Design', 'App Development', 'UI/UX', 'AI/ML'];
 
-    const filteredProjects = projects.filter(project => 
+    const filteredProjects = projects.filter(project =>
         selectedCategory === 'All' || project.category === selectedCategory
     );
 
@@ -43,12 +123,13 @@ const Works = () => {
             <div className="worksContainer">
                 <h2 className="worksTitle">My Portfolio</h2>
                 <p className="worksDesc">
-                    Welcome to my portfolio, where creativity meets functionality in the digital world. As a dedicated website designer, I specialize in crafting visually stunning and user-friendly websites that elevate brands and leave lasting impressions. Each project in my portfolio is a testament to my passion for blending design with seamless functionality. Whether it's creating responsive layouts, optimizing user experiences, or implementing cutting-edge technologies, I take pride in delivering solutions that exceed expectations. Explore my work below and envision how we can collaborate to bring your digital presence to life.
+                    Welcome to my portfolio. Here, you'll find a blend of creative design and technical functionality. Each project showcases my skills in web/app development, UI/UX, and AI.
                 </p>
+
                 <div className="categories">
                     {categories.map(category => (
-                        <button 
-                            key={category} 
+                        <button
+                            key={category}
                             onClick={() => setSelectedCategory(category)}
                             className={selectedCategory === category ? 'active' : ''}
                         >
@@ -56,10 +137,11 @@ const Works = () => {
                         </button>
                     ))}
                 </div>
+
                 <div className="worksImgs">
                     {projectsToShow.map(project => (
-                        <div 
-                            key={project.id} 
+                        <div
+                            key={project.id}
                             className="worksImgWrapper"
                             onClick={() => openModal(project)}
                         >
@@ -68,22 +150,24 @@ const Works = () => {
                                 <div className="worksInfo">
                                     <h3>{project.title}</h3>
                                     <p>{project.description}</p>
-                                    <FaHeart 
-                                        className={`favoriteIcon ${favorites.includes(project.id) ? 'favorite' : ''}`} 
+                                    <FaHeart
+                                        className={`favoriteIcon ${favorites.includes(project.id) ? 'favorite' : ''}`}
                                         onClick={(e) => {
-                                            e.stopPropagation(); 
+                                            e.stopPropagation();
                                             toggleFavorite(project.id);
-                                        }} 
+                                        }}
                                     />
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
+
                 <button className="worksBtn" onClick={() => setShowAll(!showAll)}>
                     {showAll ? 'Show Less' : 'See More'}
                 </button>
             </div>
+
             {selectedProject && (
                 <div className="modal" onClick={closeModal}>
                     <div className="modalContent" onClick={(e) => e.stopPropagation()}>
