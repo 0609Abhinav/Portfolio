@@ -1,3 +1,11 @@
 {
+  "env": {
+    "CI": "false"
+  },
+  "build": {
+    "env": {
+      "CI": "false"
+    }
+  },
   "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }

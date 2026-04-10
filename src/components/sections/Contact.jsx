@@ -1,3 +1,4 @@
+/* eslint-disable unicode-bom */
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
