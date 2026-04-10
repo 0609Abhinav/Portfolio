@@ -1,4 +1,4 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { personalInfo } from "../../data/experience";
