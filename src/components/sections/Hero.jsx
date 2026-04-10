@@ -8,7 +8,24 @@ import MagneticButton from "../ui/MagneticButton";
 import ParticleField from "../ui/ParticleField";
 import DesktopSetup from "../ui/DesktopSetup";
 
-const ROLES = ["Full-Stack Developer", "React Engineer", "Python & FastAPI Dev", "MERN Stack Developer"];
+const ROLES = [
+  "Full-Stack Developer",
+  "React Engineer",
+  "Python & Django Dev",
+  "MERN Stack Developer",
+  "AI/ML Engineer",
+  "Prompt Engineer",
+  "Angular Developer",
+  "Backend API Developer",
+  "Deep Learning Engineer",
+  "PHP Developer",
+  "Node.js Developer",
+  "Computer Vision Engineer",
+  "Next.js Developer",
+  "Database Architect",
+  "UI/UX Developer",
+  "Open Source Contributor",
+];
 
 /* ── Floating dev tech icons in Hero background — no laptop man, no A logo ── */
 const TECH_ICONS = [
