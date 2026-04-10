@@ -1,0 +1,13 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0a1f0a"/><stop offset="100%" style="stop-color:#0d2b1a"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect x="220" y="120" width="360" height="210" rx="12" fill="rgba(16,185,129,0.08)" stroke="rgba(16,185,129,0.3)" stroke-width="1.5"/>
+  <rect x="240" y="145" width="320" height="28" rx="4" fill="rgba(16,185,129,0.15)"/>
+  <rect x="240" y="185" width="200" height="12" rx="3" fill="rgba(16,185,129,0.1)"/>
+  <rect x="240" y="207" width="260" height="12" rx="3" fill="rgba(16,185,129,0.08)"/>
+  <rect x="240" y="229" width="180" height="12" rx="3" fill="rgba(16,185,129,0.1)"/>
+  <rect x="240" y="270" width="80" height="28" rx="6" fill="rgba(16,185,129,0.3)" stroke="rgba(16,185,129,0.5)" stroke-width="1"/>
+  <rect x="335" y="270" width="80" height="28" rx="6" fill="rgba(239,68,68,0.2)" stroke="rgba(239,68,68,0.4)" stroke-width="1"/>
+  <text x="400" y="370" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">Full-Stack CRUD Web App</text>
+  <text x="400" y="395" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#10b981">Node.js · MySQL · Sequelize</text>
+</svg>

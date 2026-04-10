@@ -1,0 +1,16 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0a0a1a"/><stop offset="100%" style="stop-color:#1a0a2d"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect x="195" y="105" width="120" height="90" rx="8" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+  <rect x="330" y="105" width="140" height="90" rx="8" fill="rgba(59,130,246,0.1)" stroke="rgba(59,130,246,0.3)" stroke-width="1.5"/>
+  <rect x="485" y="105" width="120" height="90" rx="8" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.3)" stroke-width="1.5"/>
+  <rect x="195" y="210" width="180" height="90" rx="8" fill="rgba(234,179,8,0.1)" stroke="rgba(234,179,8,0.3)" stroke-width="1.5"/>
+  <rect x="390" y="210" width="215" height="90" rx="8" fill="rgba(139,92,246,0.1)" stroke="rgba(139,92,246,0.3)" stroke-width="1.5"/>
+  <text x="255" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#ef4444">&#60;/&#62;</text>
+  <text x="400" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#3b82f6">CSS</text>
+  <text x="545" y="157" text-anchor="middle" font-family="Arial,sans-serif" font-size="22" fill="#10b981">JS</text>
+  <text x="285" y="262" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#eab308">UI</text>
+  <text x="497" y="262" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" fill="#8b5cf6">&#123;&#125;</text>
+  <text x="400" y="360" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">Frontend Project Collection</text>
+  <text x="400" y="385" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#a78bfa">HTML · CSS · JavaScript</text>
+</svg>

@@ -1,0 +1,15 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#1a0010"/><stop offset="100%" style="stop-color:#2d0020"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect x="270" y="100" width="260" height="200" rx="10" fill="rgba(236,72,153,0.06)" stroke="rgba(236,72,153,0.25)" stroke-width="1.5"/>
+  <rect x="270" y="100" width="260" height="40" rx="10" fill="rgba(236,72,153,0.15)"/>
+  <text x="400" y="126" text-anchor="middle" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#f9a8d4">Staff Management</text>
+  <rect x="290" y="158" width="100" height="14" rx="3" fill="rgba(236,72,153,0.12)"/>
+  <rect x="290" y="180" width="140" height="14" rx="3" fill="rgba(236,72,153,0.08)"/>
+  <rect x="290" y="202" width="120" height="14" rx="3" fill="rgba(236,72,153,0.1)"/>
+  <rect x="290" y="224" width="160" height="14" rx="3" fill="rgba(236,72,153,0.08)"/>
+  <circle cx="460" cy="165" r="20" fill="rgba(236,72,153,0.15)" stroke="rgba(236,72,153,0.4)" stroke-width="1.5"/>
+  <circle cx="460" cy="205" r="20" fill="rgba(236,72,153,0.1)" stroke="rgba(236,72,153,0.3)" stroke-width="1"/>
+  <text x="400" y="355" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">STFMS — Staff Management</text>
+  <text x="400" y="380" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#ec4899">PHP · MySQL · JavaScript</text>
+</svg>

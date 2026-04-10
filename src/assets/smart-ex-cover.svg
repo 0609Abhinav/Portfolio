@@ -1,0 +1,15 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#050816"/><stop offset="100%" style="stop-color:#0a0520"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <rect x="220" y="100" width="360" height="220" rx="10" fill="rgba(99,102,241,0.06)" stroke="rgba(99,102,241,0.25)" stroke-width="1.5"/>
+  <circle cx="400" cy="175" r="45" fill="rgba(99,102,241,0.1)" stroke="rgba(99,102,241,0.35)" stroke-width="2"/>
+  <circle cx="400" cy="165" r="18" fill="rgba(99,102,241,0.3)" stroke="rgba(99,102,241,0.5)" stroke-width="1.5"/>
+  <ellipse cx="400" cy="200" rx="28" ry="12" fill="rgba(99,102,241,0.2)"/>
+  <rect x="240" y="240" width="320" height="2" fill="rgba(99,102,241,0.2)"/>
+  <rect x="240" y="255" width="200" height="10" rx="2" fill="rgba(99,102,241,0.15)"/>
+  <rect x="240" y="273" width="260" height="10" rx="2" fill="rgba(99,102,241,0.1)"/>
+  <circle cx="530" cy="145" r="12" fill="rgba(239,68,68,0.3)" stroke="rgba(239,68,68,0.5)" stroke-width="1.5"/>
+  <text x="530" y="150" text-anchor="middle" font-family="Arial,sans-serif" font-size="10" fill="#fca5a5">AI</text>
+  <text x="400" y="365" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">Smart-Ex AI Exam System</text>
+  <text x="400" y="392" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#6366f1">MERN · Python · AI/ML</text>
+</svg>

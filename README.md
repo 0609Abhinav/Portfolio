@@ -1,70 +1,224 @@
-# Getting Started with Create React App
+<div align="center">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src="public/logo.png" alt="Abhinav Tripathi Logo" width="80" />
 
-## Available Scripts
+# Abhinav Tripathi — Developer Portfolio
 
-In the project directory, you can run:
+**Full-Stack Developer · React · Python · FastAPI · MERN Stack**
 
-### `npm start`
+[![Live Demo](https://img.shields.io/badge/Live-Demo-8B5CF6?style=for-the-badge&logo=vercel&logoColor=white)](https://github.com/0609Abhinav/Portfolio)
+[![React](https://img.shields.io/badge/React-18-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://reactjs.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-CSS-38BDF8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![License](https://img.shields.io/badge/License-MIT-f472b6?style=for-the-badge)](LICENSE)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br/>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+![Portfolio Preview](src/assets/portfolio.jpg)
 
-### `npm test`
+</div>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## ✨ Overview
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+A **cinematic, premium, interactive** developer portfolio built from scratch — designed to feel like a product experience, not a template. Every section has depth, motion, and purpose.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Built with React 18, Tailwind CSS, Framer Motion, GSAP, and a FastAPI backend.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## 🚀 Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+| Feature | Details |
+|---|---|
+| **3D Desktop Setup** | Fully coded VS Code + Terminal + Browser preview in the hero |
+| **Particle Field** | Canvas 2D animated particles with mouse parallax |
+| **GSAP Animations** | Cinematic intro timeline + ScrollTrigger section reveals |
+| **Framer Motion** | Smooth page transitions, stagger reveals, AnimatePresence |
+| **3D Tilt Cards** | Mouse-tracking rotateX/Y on project cards with light reflection |
+| **Magnetic Buttons** | Cursor pull effect on all CTAs and nav links |
+| **Cursor Spotlight** | Soft radial glow that follows the cursor |
+| **Floating Dev Icons** | 20 tech icons (React, Python, Docker, AWS…) floating in every section |
+| **3D Laptop Man** | PNG illustration with real-time mouse-tracking 3D tilt |
+| **Typing Effect** | Custom hook cycling through developer roles |
+| **Code Splitting** | `React.lazy` + `Suspense` on all below-fold sections |
+| **FastAPI Backend** | REST API for projects, skills, experience, contact |
+| **Local Fallback** | Works fully without backend — data served from local files |
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🎨 Design System
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
+Background:   #020510  →  #050816  (deep space dark)
+Accent Blue:  #3B82F6  (primary actions)
+Accent Purple:#8B5CF6  (gradients, glows)
+Accent Pink:  #f472b6  (highlights)
+Accent Cyan:  #06B6D4  (cloud, info)
+Text Primary: #f1f5f9
+Text Muted:   #64748b
+Font:         Inter (300–900)
+```
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🗂️ Project Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```
+portfolio/
+├── public/
+│   ├── logo.png              # A logo (favicon + navbar)
+│   ├── resume.pdf            # Downloadable CV
+│   └── index.html
+│
+├── src/
+│   ├── assets/               # Images, illustrations
+│   ├── components/
+│   │   ├── layout/
+│   │   │   ├── Navbar.jsx    # Sticky nav, logo, mobile menu
+│   │   │   └── Footer.jsx
+│   │   ├── sections/
+│   │   │   ├── Hero.jsx      # 3D desktop + particles + GSAP
+│   │   │   ├── About.jsx     # Timeline education + stats
+│   │   │   ├── Skills.jsx    # Tabbed skill cards
+│   │   │   ├── Projects.jsx  # 3D tilt cards + modal
+│   │   │   ├── AITools.jsx   # Interactive AI tool cards
+│   │   │   └── Contact.jsx   # Functional contact form
+│   │   └── ui/
+│   │       ├── DesktopSetup.jsx   # 3D coded monitor scene
+│   │       ├── ParticleField.jsx  # Canvas 2D particles
+│   │       ├── FloatingIcons.jsx  # Dev icons + 3D laptop man
+│   │       ├── CursorSpotlight.jsx
+│   │       ├── MagneticButton.jsx
+│   │       ├── SectionHeader.jsx
+│   │       └── Skeleton.jsx
+│   ├── data/
+│   │   ├── projects.js       # All project data
+│   │   ├── skills.js         # Skill categories + levels
+│   │   └── experience.js     # Education, certs, personal info
+│   ├── hooks/
+│   │   ├── useFetch.js       # Generic data fetching
+│   │   ├── useScrollReveal.js
+│   │   ├── useTyping.js      # Typing effect
+│   │   ├── useTilt.js        # 3D mouse tilt
+│   │   └── useMagnet.js      # Magnetic cursor pull
+│   ├── services/
+│   │   └── api.js            # API layer (backend or local fallback)
+│   └── styles/
+│       └── globals.css       # Tailwind + design system
+│
+└── backend/
+    ├── main.py               # FastAPI app
+    ├── database.py           # SQLAlchemy + SQLite/PostgreSQL
+    ├── models.py             # Pydantic models
+    ├── routers/
+    │   ├── projects.py
+    │   ├── skills.py
+    │   ├── experience.py
+    │   └── contact.py
+    └── requirements.txt
+```
 
-### Code Splitting
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## ⚡ Getting Started
 
-### Analyzing the Bundle Size
+### Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+# Clone
+git clone https://github.com/0609Abhinav/Portfolio.git
+cd Portfolio
 
-### Making a Progressive Web App
+# Install
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+# Run dev server
+npm start
+# → http://localhost:3000
+```
 
-### Advanced Configuration
+### Backend (optional)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+cd backend
 
-### Deployment
+# Install Python deps (Python 3.7+)
+pip install -r requirements.txt
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+# Run
+python -m uvicorn main:app --reload --port 8000
+# → http://127.0.0.1:8000
+# → Swagger UI: http://127.0.0.1:8000/docs
+```
 
-### `npm run build` fails to minify
+### Connect Frontend to Backend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Create a `.env` file in the project root:
+
+```env
+REACT_APP_API_URL=http://127.0.0.1:8000
+REACT_APP_CONTACT_EMAIL=your@email.com
+```
+
+> Without `.env`, the frontend uses local data files automatically — no backend needed.
+
+---
+
+## 🔌 API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/projects` | All projects (filter by `?category=Web`) |
+| `GET` | `/skills` | Skill categories with levels |
+| `GET` | `/experience` | Education + certifications |
+| `POST` | `/contact` | Submit contact message |
+| `GET` | `/health` | Health check |
+
+---
+
+## 🛠️ Tech Stack
+
+**Frontend**
+- React 18 + React Router
+- Tailwind CSS 3
+- Framer Motion 12
+- GSAP + ScrollTrigger
+- react-scroll
+
+**Backend**
+- FastAPI
+- SQLAlchemy + SQLite / PostgreSQL
+- Pydantic v1
+- Uvicorn
+
+**Dev Tools**
+- Create React App
+- PostCSS + Autoprefixer
+
+---
+
+## 📦 Build
+
+```bash
+npm run build
+# Output → /build (production-optimized)
+```
+
+---
+
+## 🤝 Connect
+
+<div align="center">
+
+[![GitHub](https://img.shields.io/badge/GitHub-0609Abhinav-181717?style=for-the-badge&logo=github)](https://github.com/0609Abhinav)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Abhinav_Tripathi-0A66C2?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/abhinav-tripathi-770224253/)
+
+</div>
+
+---
+
+<div align="center">
+  <sub>Designed & built by <strong>Abhinav Tripathi</strong> · 2025</sub>
+</div>

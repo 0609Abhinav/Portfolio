@@ -1,0 +1,19 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#0a0a0a"/><stop offset="100%" style="stop-color:#1a1a1a"/></linearGradient></defs>
+  <rect width="800" height="450" fill="url(#g)"/>
+  <g transform="translate(400,180)">
+    <!-- top face -->
+    <polygon points="0,-80 70,-40 0,0 -70,-40" fill="rgba(239,68,68,0.7)" stroke="#111" stroke-width="1.5"/>
+    <!-- right face -->
+    <polygon points="70,-40 70,40 0,80 0,0" fill="rgba(59,130,246,0.7)" stroke="#111" stroke-width="1.5"/>
+    <!-- left face -->
+    <polygon points="-70,-40 0,0 0,80 -70,40" fill="rgba(234,179,8,0.7)" stroke="#111" stroke-width="1.5"/>
+    <!-- grid lines top -->
+    <line x1="-23" y1="-53" x2="47" y2="-13" stroke="rgba(0,0,0,0.5)" stroke-width="1"/>
+    <line x1="-47" y1="-13" x2="23" y2="27" stroke="rgba(0,0,0,0.5)" stroke-width="1"/>
+    <line x1="-23" y1="-67" x2="-23" y2="13" stroke="rgba(0,0,0,0.5)" stroke-width="1"/>
+    <line x1="23" y1="-67" x2="23" y2="13" stroke="rgba(0,0,0,0.5)" stroke-width="1"/>
+  </g>
+  <text x="400" y="340" text-anchor="middle" font-family="Arial,sans-serif" font-size="20" font-weight="bold" fill="#e2e8f0">AI Rubik's Cube Solver</text>
+  <text x="400" y="368" text-anchor="middle" font-family="Arial,sans-serif" font-size="12" fill="#ef4444">Python · AI Algorithms · BFS/DFS</text>
+</svg>
