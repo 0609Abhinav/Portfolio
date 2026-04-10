@@ -24,9 +24,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Python
+# Python / Backend (keep local only)
+backend/
 __pycache__/
 *.pyc
 *.pyo
-backend/portfolio.db
-backend/.env
