@@ -57,36 +57,56 @@ export default function AIAvatarPanel() {
     if (wordTimer.current) clearTimeout(wordTimer.current);
   }, []);
 
-  // ── Auto-play on mount (1.8s delay to let hero animate in) ──
+  // ── Auto-play on mount (1.8s delay) or first interaction ──
   useEffect(() => {
     if (!supported.tts) return;
 
-    const t = setTimeout(() => {
+    let hasAttempted = false;
+
+    const doSpeak = () => {
+      if (hasAttempted) return;
+      hasAttempted = true;
       setHasStarted(true);
       setIsPaused(false);
       setSubtitle("");
 
-      // Voices sometimes load async on Chrome
-      const doSpeak = () => {
-        speak(INTRO_TEXT, {
-          rate: 0.92,
-          pitch: 1.05,
-          onEnd: () => setHasStarted(false),
-        });
-        startSubtitles();
-      };
+      speak(INTRO_TEXT, {
+        rate: 0.92,
+        pitch: 1.05,
+        onEnd: () => setHasStarted(false),
+      });
+      startSubtitles();
+    };
 
+    const tryAutoPlay = () => {
       if (window.speechSynthesis.getVoices().length === 0) {
         window.speechSynthesis.onvoiceschanged = doSpeak;
       } else {
         doSpeak();
       }
+    };
+
+    // Attempt 1: Try playing automatically after 1.8s
+    const t = setTimeout(() => {
+      tryAutoPlay();
     }, 1800);
+
+    // Attempt 2: If browser blocked auto-play, catch the first interaction
+    const onInteract = () => {
+      if (!hasAttempted) tryAutoPlay();
+    };
+
+    ["click", "touchstart", "keydown", "scroll"].forEach((evt) =>
+      window.addEventListener(evt, onInteract, { once: true, passive: true })
+    );
 
     return () => {
       clearTimeout(t);
       stopSubtitles();
       if (window.speechSynthesis) window.speechSynthesis.cancel();
+      ["click", "touchstart", "keydown", "scroll"].forEach((evt) =>
+        window.removeEventListener(evt, onInteract)
+      );
     };
   }, [speak, startSubtitles, stopSubtitles, supported.tts]);
 
