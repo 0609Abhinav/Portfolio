@@ -1,17 +1,15 @@
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import profilePic from "../../assets/profile-pic.png";
 
 /* ─────────────────────────────────────────────────────────────────
-   AITalkingAvatar — Local Video Player for Hero Section
-   ─ Plays a pre-generated HeyGen video locally (zero API costs, 
-     instant load, 100% reliable).
-   ─ Auto-plays intro (muted by default, tap to unmute)
-   ─ Word-by-word subtitles synced to speaking pace
-   ─ Controls: Replay · Mute/Unmute
-   
-   Setup:
-     Generate your intro video on app.heygen.com, download it,
-     and save it as `public/avatar.mp4`.
+   AITalkingAvatar — Free "Audio Link" Version
+   ─ Uses the browser's built-in Web Speech API (100% free forever)
+   ─ Displays the user's profile picture with a subtle pulse/breathing
+     animation while speaking.
+   ─ Uses `onboundary` event for exact word-by-word subtitle sync!
+   ─ Controls: Play/Pause, Replay
+   ─ Premium glassmorphism UI matching the futuristic theme.
 ─────────────────────────────────────────────────────────────────── */
 
 const INTRO_TEXT =
@@ -22,81 +20,83 @@ const INTRO_TEXT =
   "Explore my projects or ask my AI assistant anything about my work!";
 
 export default function AITalkingAvatar() {
-  const videoRef = useRef(null);
-  
-  const [phase, setPhase]           = useState("idle");
+  const [phase, setPhase]           = useState("ready"); // ready | speaking
   const [subtitle, setSubtitle]     = useState("");
-  const [isMuted, setIsMuted]       = useState(true);
-  const [showUnmute, setShowUnmute] = useState(false);
-  const [hasVideoError, setHasVideoError] = useState(false);
   const [isPlaying, setIsPlaying]   = useState(false);
+  const utteranceRef                = useRef(null);
+  const wordsRef                    = useRef(INTRO_TEXT.split(" "));
 
-  // Simple subtitle logic based on time
-  const words = INTRO_TEXT.split(/\s+/);
-  const wordsPerSecond = 2.4; // approximate talking speed
-
+  // Ensure speech synthesis is stopped on unmount
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    return () => {
+      window.speechSynthesis.cancel();
+    };
+  }, []);
 
-    const handleTimeUpdate = () => {
-      const time = video.currentTime;
-      if (time > 0) {
-        setPhase("speaking");
-        const wordIndex = Math.min(Math.floor(time * wordsPerSecond), words.length - 1);
-        setSubtitle(words.slice(0, wordIndex + 1).join(" "));
+  const initUtterance = () => {
+    window.speechSynthesis.cancel(); // clear queue
+    const utterance = new SpeechSynthesisUtterance(INTRO_TEXT);
+    
+    // Pick a good English voice (preferably male/professional if available)
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoice = voices.find(v => v.lang.includes('en-') && (v.name.includes('Male') || v.name.includes('Google') || v.name.includes('Microsoft')));
+    if (preferredVoice) utterance.voice = preferredVoice;
+
+    utterance.rate = 0.95; // Slightly slower for better pacing
+    utterance.pitch = 1.0;
+
+    // EXACT word-by-word sync
+    utterance.onboundary = (event) => {
+      if (event.name === "word") {
+        const textUntilNow = INTRO_TEXT.slice(0, event.charIndex + event.charLength);
+        setSubtitle(textUntilNow);
       }
     };
 
-    const handleEnded = () => {
+    utterance.onstart = () => {
+      setPhase("speaking");
+      setIsPlaying(true);
+      setSubtitle(""); // Will be populated by onboundary
+    };
+
+    utterance.onend = () => {
       setPhase("ready");
       setIsPlaying(false);
       setSubtitle("");
     };
 
-    const handlePlay = () => {
-      setIsPlaying(true);
-      setShowUnmute(isMuted);
+    utterance.onerror = (e) => {
+      if (e.error !== "canceled") {
+        console.error("SpeechSynthesis Error:", e);
+        setPhase("ready");
+        setIsPlaying(false);
+      }
     };
 
-    const handlePause = () => {
+    utteranceRef.current = utterance;
+    return utterance;
+  };
+
+  const togglePlay = () => {
+    if (isPlaying) {
+      window.speechSynthesis.pause();
       setIsPlaying(false);
       setPhase("ready");
-    };
-
-    video.addEventListener("timeupdate", handleTimeUpdate);
-    video.addEventListener("ended", handleEnded);
-    video.addEventListener("play", handlePlay);
-    video.addEventListener("pause", handlePause);
-
-    return () => {
-      video.removeEventListener("timeupdate", handleTimeUpdate);
-      video.removeEventListener("ended", handleEnded);
-      video.removeEventListener("play", handlePlay);
-      video.removeEventListener("pause", handlePause);
-    };
-  }, [words, isMuted]);
-
-  const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-      setShowUnmute(false);
+    } else {
+      if (window.speechSynthesis.paused) {
+        window.speechSynthesis.resume();
+        setIsPlaying(true);
+        setPhase("speaking");
+      } else {
+        const u = initUtterance();
+        window.speechSynthesis.speak(u);
+      }
     }
   };
 
   const replay = () => {
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => {});
-    }
-  };
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) videoRef.current.pause();
-      else videoRef.current.play().catch(() => {});
-    }
+    const u = initUtterance();
+    window.speechSynthesis.speak(u);
   };
 
   /* ─────────────────────────────────────────────────────────── */
@@ -156,16 +156,12 @@ export default function AITalkingAvatar() {
             transition={{ duration: 0.8, repeat: Infinity }}
             style={{
               width: 6, height: 6, borderRadius: "50%",
-              background: hasVideoError ? "#f87171"
-                        : phase === "speaking" ? "#4ade80"
-                        : "#94a3b8",
+              background: phase === "speaking" ? "#4ade80" : "#94a3b8",
               display: "inline-block",
             }}
           />
           <span style={{ fontSize: "0.65rem", color: "#64748b", letterSpacing: "0.08em", textTransform: "uppercase" }}>
-            {hasVideoError ? "Video Missing"
-           : phase === "speaking" ? "Speaking"
-           : "Ready"}
+            {phase === "speaking" ? "Audio Link Active" : "Comms Ready"}
           </span>
         </div>
 
@@ -187,67 +183,43 @@ export default function AITalkingAvatar() {
         )}
       </div>
 
-      {/* ── Video frame ── */}
+      {/* ── Image frame ── */}
       <div style={{
         position: "relative", margin: "0 10px", borderRadius: "0.9rem", overflow: "hidden",
         aspectRatio: "9/13",
         background: "rgba(0,0,0,0.5)",
         border: "1px solid rgba(0,255,255,0.08)",
       }}>
-        {hasVideoError && (
-          <div style={{
-            position: "absolute", inset: 0,
-            display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center", gap: 14,
-            background: "rgba(2,5,16,0.95)",
-            zIndex: 3, padding: "0 20px", textAlign: "center"
-          }}>
-            <span style={{ fontSize: "1.5rem" }}>🎥</span>
-            <p style={{ fontSize: "0.7rem", color: "#e2e8f0", lineHeight: 1.5 }}>
-              Generate your intro video on HeyGen, download it as <b>avatar.mp4</b>, and save it in the <b>public/</b> folder.
-            </p>
-          </div>
-        )}
-
-        <video
-          ref={videoRef}
-          src="/avatar.mp4"
-          autoPlay
-          playsInline
-          muted={isMuted}
-          onError={() => setHasVideoError(true)}
+        
+        {/* Subtle breathing effect when speaking */}
+        <motion.img
+          src={profilePic}
+          alt="Abhinav Tripathi"
+          animate={{
+             scale: phase === "speaking" ? [1, 1.03, 1] : 1,
+             filter: phase === "speaking" ? ["brightness(1)", "brightness(1.1)", "brightness(1)"] : "brightness(1)"
+          }}
+          transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
           style={{
             width: "100%", height: "100%",
             objectFit: "cover",
-            display: hasVideoError ? "none" : "block",
+            display: "block",
+            transformOrigin: "center center"
           }}
         />
 
-        {/* "Tap to unmute" overlay */}
-        <AnimatePresence>
-          {isPlaying && isMuted && showUnmute && (
-            <motion.button
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0 }}
-              onClick={() => { toggleMute(); setShowUnmute(false); }}
-              style={{
-                position: "absolute", bottom: 10, left: "50%",
-                transform: "translateX(-50%)",
-                padding: "5px 14px", borderRadius: 999,
-                border: "1px solid rgba(0,255,255,0.4)",
-                background: "rgba(2,5,16,0.85)",
-                backdropFilter: "blur(8px)",
-                color: "#67e8f9", fontSize: "0.68rem",
-                fontWeight: 600, cursor: "pointer",
-                whiteSpace: "nowrap", touchAction: "manipulation",
-                zIndex: 5,
-              }}
-            >
-              🔊 Tap to hear
-            </motion.button>
-          )}
-        </AnimatePresence>
+        {/* Hologram scanline overlay */}
+        {phase === "speaking" && (
+          <motion.div
+            animate={{ top: ["-10%", "110%"] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            style={{
+              position: "absolute", left: 0, right: 0, height: "15%",
+              background: "linear-gradient(to bottom, transparent, rgba(0,255,255,0.2), transparent)",
+              pointerEvents: "none", zIndex: 3
+            }}
+          />
+        )}
 
         {/* Subtitle strip */}
         <AnimatePresence>
@@ -273,7 +245,7 @@ export default function AITalkingAvatar() {
 
         {/* Waveform bars */}
         <AnimatePresence>
-          {phase === "speaking" && !isMuted && (
+          {phase === "speaking" && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -330,7 +302,6 @@ export default function AITalkingAvatar() {
         <ControlBtn
           title={isPlaying ? "Pause" : "Play"}
           onClick={togglePlay}
-          disabled={hasVideoError}
           active={isPlaying}
         >
           {isPlaying ? (
@@ -343,43 +314,19 @@ export default function AITalkingAvatar() {
               <polygon points="5 3 19 12 5 21 5 3"/>
             </svg>
           )}
-          <span style={{ fontSize: "0.62rem", fontWeight: 600 }}>{isPlaying ? "Pause" : "Play"}</span>
+          <span style={{ fontSize: "0.62rem", fontWeight: 600 }}>{isPlaying ? "Pause" : "Listen"}</span>
         </ControlBtn>
 
         {/* Replay */}
         <ControlBtn
           title="Replay intro"
           onClick={replay}
-          disabled={hasVideoError}
           active={false}
         >
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
             <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.49"/>
           </svg>
           <span style={{ fontSize: "0.62rem", fontWeight: 600 }}>Replay</span>
-        </ControlBtn>
-
-        {/* Mute / Unmute */}
-        <ControlBtn
-          title={isMuted ? "Unmute" : "Mute"}
-          onClick={toggleMute}
-          disabled={hasVideoError}
-          active={!isMuted}
-        >
-          {isMuted ? (
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-              <line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>
-            </svg>
-          ) : (
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
-              <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
-            </svg>
-          )}
-          <span style={{ fontSize: "0.62rem", fontWeight: 600 }}>
-            {isMuted ? "Unmute" : "Mute"}
-          </span>
         </ControlBtn>
       </div>
     </motion.div>
@@ -411,4 +358,5 @@ function ControlBtn({ children, onClick, disabled, active, title }) {
     </motion.button>
   );
 }
+
 
