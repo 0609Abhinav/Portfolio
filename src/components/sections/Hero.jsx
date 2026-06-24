@@ -8,6 +8,7 @@ import MagneticButton from "../ui/MagneticButton";
 import ParticleField from "../ui/ParticleField";
 import DesktopSetup from "../ui/DesktopSetup";
 import AIAvatarPanel from "../ui/AIAvatarPanel";
+import AITalkingAvatar from "../ui/AITalkingAvatar";
 
 const ROLES = [
   "Full-Stack Developer",
@@ -194,9 +195,11 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — AI Avatar + 3D Desktop Setup */}
-          <div ref={imgRef} className="flex-shrink-0 relative hidden lg:flex flex-col items-center gap-8" style={{ willChange:"transform", zIndex:5 }}>
-            {/* AI Avatar Panel */}
+          {/* RIGHT — AI Talking Avatar + Holographic Orb + 3D Desktop */}
+          <div ref={imgRef} className="flex-shrink-0 relative hidden lg:flex flex-col items-center gap-6" style={{ willChange:"transform", zIndex:5 }}>
+            {/* Realistic HeyGen talking avatar */}
+            <AITalkingAvatar />
+            {/* Holographic AI orb (unchanged) */}
             <AIAvatarPanel />
             {/* 3D Desktop Setup */}
             <DesktopSetup />

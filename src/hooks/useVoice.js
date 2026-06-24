@@ -4,9 +4,27 @@ import { useState, useEffect, useRef, useCallback } from "react";
    useVoice — Browser-native Text-to-Speech + Speech-to-Text
    Uses: window.speechSynthesis  (TTS)
          window.SpeechRecognition (STT)
-   No external API keys required.
-   Swap-in point: replace speak() body with ElevenLabs/OpenAI TTS call.
+   Auto-play unlock: fires a silent utterance on the first user
+   gesture so subsequent auto-speak calls work without needing
+   an explicit user interaction per call.
 ───────────────────────────────────────────────────────────── */
+
+/* ── Module-level auto-play unlock ── */
+if (typeof window !== "undefined" && "speechSynthesis" in window) {
+  const _unlock = () => {
+    // Speak a zero-length utterance to prime the audio context
+    const u = new SpeechSynthesisUtterance("");
+    u.volume = 0;
+    window.speechSynthesis.speak(u);
+    window.speechSynthesis.cancel();
+    ["click","touchstart","keydown","scroll"].forEach((e) =>
+      window.removeEventListener(e, _unlock)
+    );
+  };
+  ["click","touchstart","keydown","scroll"].forEach((e) =>
+    window.addEventListener(e, _unlock, { once: true, passive: true })
+  );
+}
 
 export default function useVoice() {
   const [isSpeaking, setIsSpeaking]   = useState(false);
@@ -60,8 +78,9 @@ export default function useVoice() {
     (text, { rate = 0.95, pitch = 1.0, volume = 1.0, onEnd } = {}) => {
       if (!synthRef.current || !text) return;
 
-      // Cancel any current speech
+      // Cancel + resume fixes Chrome's stuck-synthesis bug
       synthRef.current.cancel();
+      synthRef.current.resume();
 
       const utter          = new SpeechSynthesisUtterance(text);
       utter.rate           = rate;
@@ -70,16 +89,17 @@ export default function useVoice() {
       utteranceRef.current = utter;
       onEndRef.current     = onEnd;
 
-      // Pick a natural English voice if available
+      // Pick a natural English male voice if available
       const voices = synthRef.current.getVoices();
       const preferred = voices.find(
         (v) =>
           v.lang.startsWith("en") &&
-          (v.name.includes("Google") ||
-            v.name.includes("Samantha") ||
+          (v.name.includes("Google UK English Male") ||
+            v.name.includes("Google US English") ||
             v.name.includes("Daniel") ||
             v.name.includes("Premium") ||
-            v.name.includes("Enhanced"))
+            v.name.includes("Enhanced") ||
+            v.name.includes("Google"))
       );
       if (preferred) utter.voice = preferred;
 
@@ -88,7 +108,23 @@ export default function useVoice() {
         setIsSpeaking(false);
         if (onEndRef.current) onEndRef.current();
       };
-      utter.onerror = () => setIsSpeaking(false);
+      utter.onerror = () => {
+        setIsSpeaking(false);
+        // Retry once after a short delay (Chrome sometimes needs this)
+        setTimeout(() => {
+          if (synthRef.current && text) {
+            synthRef.current.resume();
+            const retry = new SpeechSynthesisUtterance(text);
+            retry.rate   = rate;
+            retry.pitch  = pitch;
+            retry.volume = volume;
+            if (preferred) retry.voice = preferred;
+            retry.onstart = () => setIsSpeaking(true);
+            retry.onend   = () => { setIsSpeaking(false); onEndRef.current?.(); };
+            synthRef.current.speak(retry);
+          }
+        }, 250);
+      };
 
       synthRef.current.speak(utter);
     },
