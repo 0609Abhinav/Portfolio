@@ -7,6 +7,7 @@ import { personalInfo } from "../../data/experience";
 import MagneticButton from "../ui/MagneticButton";
 import ParticleField from "../ui/ParticleField";
 import DesktopSetup from "../ui/DesktopSetup";
+import AIAvatarPanel from "../ui/AIAvatarPanel";
 
 const ROLES = [
   "Full-Stack Developer",
@@ -193,8 +194,11 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* RIGHT — 3D Desktop Setup */}
-          <div ref={imgRef} className="flex-shrink-0 relative hidden lg:block" style={{ willChange:"transform", zIndex:5 }}>
+          {/* RIGHT — AI Avatar + 3D Desktop Setup */}
+          <div ref={imgRef} className="flex-shrink-0 relative hidden lg:flex flex-col items-center gap-8" style={{ willChange:"transform", zIndex:5 }}>
+            {/* AI Avatar Panel */}
+            <AIAvatarPanel />
+            {/* 3D Desktop Setup */}
             <DesktopSetup />
           </div>
         </div>

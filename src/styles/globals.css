@@ -195,3 +195,78 @@ body::before {
   .holo-frame::before { top: 0; left: 0; border-width: 2px 0 0 2px; }
   .holo-frame::after  { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   AI ASSISTANT — additive styles (do NOT remove existing above)
+══════════════════════════════════════════════════════════════ */
+
+/* Chat panel scrollbar */
+.ai-chat-messages::-webkit-scrollbar { width: 3px; }
+.ai-chat-messages::-webkit-scrollbar-track { background: transparent; }
+.ai-chat-messages::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(0,255,255,0.3), rgba(139,92,246,0.3));
+  border-radius: 4px;
+}
+
+/* Hide scrollbar on chips row */
+.ai-chips-scroll::-webkit-scrollbar { display: none; }
+
+/* Avatar orb ambient pulse */
+@keyframes avatarAmbient {
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50%       { opacity: 0.30; transform: scale(1.04); }
+}
+
+/* Neural dot orbit animation */
+@keyframes neuralOrbit {
+  0%   { transform: rotate(0deg)   translateX(70px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(70px) rotate(-360deg); }
+}
+
+/* Waveform bar pulse */
+@keyframes waveBar {
+  0%, 100% { transform: scaleY(0.3); }
+  50%       { transform: scaleY(1.0); }
+}
+
+/* Floating button persistent glow pulse */
+@keyframes floatBtnGlow {
+  0%, 100% { box-shadow: 0 0 24px rgba(0,255,255,0.2), 0 0 48px rgba(139,92,246,0.1), 0 8px 32px rgba(0,0,0,0.5); }
+  50%       { box-shadow: 0 0 36px rgba(0,255,255,0.35), 0 0 72px rgba(139,92,246,0.18), 0 8px 32px rgba(0,0,0,0.5); }
+}
+
+/* Listening ring expansion */
+@keyframes listenRing {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+/* AI message slide-in */
+@keyframes msgIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Typing dot bounce */
+@keyframes typingBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+/* Hologram scanline for subtitle strip */
+@keyframes scanMove {
+  from { top: -4px; }
+  to   { top: 100%; }
+}
+
+/* Subtitle word reveal */
+@keyframes wordReveal {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Cursor blink in subtitle */
+@keyframes subtitleBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}

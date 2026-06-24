@@ -6,6 +6,7 @@ import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
 import CursorSpotlight from "./components/ui/CursorSpotlight";
 import { Skeleton } from "./components/ui/Skeleton";
+import AIAssistant from "./components/ui/AIAssistant";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,6 +61,8 @@ export default function App() {
         <Suspense fallback={<SectionFallback />}><Contact /></Suspense>
       </main>
       <Footer />
+      {/* ── AI Portfolio Assistant (persistent overlay) ── */}
+      <AIAssistant />
     </div>
   );
 }
