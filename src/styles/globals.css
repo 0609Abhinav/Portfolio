@@ -270,3 +270,57 @@ body::before {
   0%, 100% { opacity: 1; }
   50%       { opacity: 0; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   AI ASSISTANT — MOBILE RESPONSIVE  (CSS-only, no JS re-renders)
+   Converts floating panel → full-screen bottom sheet on mobile
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 767px) {
+
+  /* Float button — slightly smaller, stays visible */
+  .ai-float-btn {
+    width: 52px !important;
+    height: 52px !important;
+    bottom: 20px !important;
+    right: 16px !important;
+  }
+
+  /* Chat panel → bottom sheet */
+  .ai-chat-panel {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 88vh !important;
+    max-height: 88vh !important;
+    border-radius: 1.4rem 1.4rem 0 0 !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: none !important;
+  }
+
+  /* Show drag handle on mobile */
+  .ai-drag-handle {
+    display: flex !important;
+  }
+
+  /* Show mobile close button */
+  .ai-mobile-close {
+    display: flex !important;
+  }
+
+  /* Touch-friendly icon buttons (44px minimum per Apple HIG) */
+  .ai-icon-btn {
+    width: 44px !important;
+    height: 44px !important;
+  }
+
+  /* Larger chip tap targets on mobile */
+  .ai-chips-scroll button {
+    min-height: 36px !important;
+    padding: 6px 14px !important;
+    font-size: 0.75rem !important;
+  }
+}
