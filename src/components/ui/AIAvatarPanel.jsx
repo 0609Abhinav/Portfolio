@@ -39,14 +39,19 @@ export default function AIAvatarPanel() {
 
   // ── Word-by-word subtitle reveal ──
   const startSubtitles = useCallback(() => {
+    if (wordTimer.current) clearTimeout(wordTimer.current); // clear existing timer
+    
     let idx = 0;
     const words = wordsArr.current;
     setSubtitle("");
 
     const tick = () => {
       if (idx >= words.length) return;
-      setSubtitle((prev) => (prev ? prev + " " + words[idx] : words[idx]));
+      
+      // Use slice to guarantee exact string, avoiding double appends in strict mode
+      setSubtitle(words.slice(0, idx + 1).join(" "));
       idx++;
+      
       // ~280ms per word matches natural speech rate
       wordTimer.current = setTimeout(tick, 280);
     };
@@ -54,7 +59,10 @@ export default function AIAvatarPanel() {
   }, []);
 
   const stopSubtitles = useCallback(() => {
-    if (wordTimer.current) clearTimeout(wordTimer.current);
+    if (wordTimer.current) {
+      clearTimeout(wordTimer.current);
+      wordTimer.current = null;
+    }
   }, []);
 
   // ── Auto-play on mount (1.8s delay) or first interaction ──
