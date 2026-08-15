@@ -44,7 +44,7 @@ function ProjectCard({ project, index }) {
           display: "flex",
           flexDirection: "column",
           position: "relative",
-          boxShadow: hovered ? "0 0 30px rgba(0,255,255,0.08), 0 0 60px rgba(139,92,246,0.06)" : "none",
+          boxShadow: hovered ? "0 0 20px rgba(0,255,255,0.05), 0 0 40px rgba(139,92,246,0.04)" : "none",
           transition: "box-shadow 0.3s",
         }}
       >
@@ -220,7 +220,7 @@ export default function Projects() {
       style={{ background: "linear-gradient(180deg, #020510 0%, #050816 100%)", position: "relative", overflow: "hidden" }}>
       <FloatingIcons seed={4} count={8} opacity={0.08} />
       <div className="section-container">
-        <div className="section-divider mb-24" />
+        <div className="section-divider" />
         <div className="projects-header">
           <SectionHeader
             label="Portfolio"

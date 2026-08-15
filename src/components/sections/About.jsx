@@ -53,7 +53,7 @@ export default function About() {
             </motion.div>
 
             {/* Bio */}
-            <motion.div initial={{ opacity:0, x:24 }} animate={isVisible ? { opacity:1, x:0 } : {}} transition={{ duration:0.7, delay:0.1, ease:[0.22,1,0.36,1] }}
+            <motion.article initial={{ opacity:0, x:24 }} animate={isVisible ? { opacity:1, x:0 } : {}} transition={{ duration:0.7, delay:0.1, ease:[0.22,1,0.36,1] }}
               style={{ flex:1, minWidth:280 }}>
               <p style={{ color:"#94a3b8", lineHeight:1.85, marginBottom:"0.9rem", fontSize:"0.95rem" }}>
                 Passionate full-stack developer building production-grade web apps.
@@ -84,7 +84,7 @@ export default function About() {
                 <a href={personalInfo.linkedin} target="_blank" rel="noopener noreferrer" className="btn-secondary" style={{ fontSize:"0.8rem", padding:"7px 16px" }}>LinkedIn</a>
                 <a href={personalInfo.resume} download className="btn-primary" style={{ fontSize:"0.8rem", padding:"7px 16px" }}>Download CV</a>
               </div>
-            </motion.div>
+            </motion.article>
           </div>
 
           {/* Education + Certs */}

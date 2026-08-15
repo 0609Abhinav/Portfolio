@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useVoice from "../../hooks/useVoice";
+import introAudioSrc from "../../assets/audio/intro.m4a";
 
 /* ─────────────────────────────────────────────────────────────
    AIAvatarPanel — Holographic AI avatar for Hero section
@@ -33,9 +34,11 @@ export default function AIAvatarPanel() {
   const { speak, stopSpeaking, isSpeaking, supported } = useVoice();
   const [hasStarted, setHasStarted]   = useState(false);
   const [isPaused, setIsPaused]       = useState(false);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [subtitle, setSubtitle]       = useState("");
   const wordTimer    = useRef(null);
   const wordsArr     = useRef(INTRO_TEXT.split(" "));
+  const audioRef     = useRef(null);
 
   // ── Word-by-word subtitle reveal ──
   const startSubtitles = useCallback(() => {
@@ -67,9 +70,16 @@ export default function AIAvatarPanel() {
 
   // ── Auto-play on mount (1.8s delay) or first interaction ──
   useEffect(() => {
-    if (!supported.tts) return;
-
     let hasAttempted = false;
+
+    const doSpeakFallback = () => {
+      if (!supported.tts) return;
+      speak(INTRO_TEXT, {
+        rate: 0.92,
+        pitch: 1.05,
+        onEnd: () => setHasStarted(false),
+      });
+    };
 
     const doSpeak = () => {
       if (hasAttempted) return;
@@ -78,16 +88,20 @@ export default function AIAvatarPanel() {
       setIsPaused(false);
       setSubtitle("");
 
-      speak(INTRO_TEXT, {
-        rate: 0.92,
-        pitch: 1.05,
-        onEnd: () => setHasStarted(false),
-      });
       startSubtitles();
+
+      if (audioRef.current) {
+        audioRef.current.play().catch(e => {
+          console.warn("Autoplay blocked or audio failed, falling back to TTS", e);
+          doSpeakFallback();
+        });
+      } else {
+        doSpeakFallback();
+      }
     };
 
     const tryAutoPlay = () => {
-      if (window.speechSynthesis.getVoices().length === 0) {
+      if (supported.tts && window.speechSynthesis && window.speechSynthesis.getVoices().length === 0) {
         window.speechSynthesis.onvoiceschanged = doSpeak;
       } else {
         doSpeak();
@@ -112,6 +126,10 @@ export default function AIAvatarPanel() {
       clearTimeout(t);
       stopSubtitles();
       if (window.speechSynthesis) window.speechSynthesis.cancel();
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.currentTime = 0;
+      }
       ["click", "touchstart", "keydown", "scroll"].forEach((evt) =>
         window.removeEventListener(evt, onInteract)
       );
@@ -127,21 +145,42 @@ export default function AIAvatarPanel() {
       setSubtitle("");
       setHasStarted(true);
       setIsPaused(false);
-      speak(INTRO_TEXT, {
-        rate: 0.92,
-        pitch: 1.05,
-        onEnd: () => setHasStarted(false),
-      });
       startSubtitles();
+      
+      if (audioRef.current) {
+        if (audioRef.current.currentTime > 0 && isPaused) {
+           audioRef.current.play().catch(e => {
+             console.warn("Audio playback failed, falling back to TTS", e);
+             if (supported.tts) speak(INTRO_TEXT, { rate: 0.92, pitch: 1.05, onEnd: () => setHasStarted(false) });
+           });
+        } else {
+           audioRef.current.currentTime = 0;
+           audioRef.current.play().catch(e => {
+             console.warn("Audio playback failed, falling back to TTS", e);
+             if (supported.tts) speak(INTRO_TEXT, { rate: 0.92, pitch: 1.05, onEnd: () => setHasStarted(false) });
+           });
+        }
+      } else {
+        if (supported.tts) {
+          speak(INTRO_TEXT, {
+            rate: 0.92,
+            pitch: 1.05,
+            onEnd: () => setHasStarted(false),
+          });
+        }
+      }
     } else {
       // Pause
       stopSpeaking();
       stopSubtitles();
       setIsPaused(true);
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     }
   };
 
-  const isActive = isSpeaking;
+  const isActive = isSpeaking || isAudioPlaying;
 
   return (
     <div
@@ -154,6 +193,13 @@ export default function AIAvatarPanel() {
         position: "relative",
       }}
     >
+      <audio 
+        ref={audioRef} 
+        src={introAudioSrc} 
+        onPlay={() => setIsAudioPlaying(true)} 
+        onEnded={() => { setIsAudioPlaying(false); setHasStarted(false); }}
+        onPause={() => setIsAudioPlaying(false)}
+      />
       {/* ── Status Badge ── */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}

@@ -1,0 +1,46 @@
+<USER_REQUEST>
+# Master Prompt: Portfolio SEO, UI/UX & Human-Voice Upgrade
+
+Paste this whole prompt into your AI coding assistant (Claude Code, Cursor, Windsurf, etc.) inside your project repo. It's written so the assistant has full context and a checklist it can execute against, section by section.
+
+---
+
+## ROLE
+
+Act as a senior full-stack engineer with 10+ years of UI/UX design experience and 3+ years specializing in AI/voice product engineering. You have taste — you notice when spacing is 2px off, when a gradient is doing too much work, when a CTA doesn't earn its color. You also think like a growth engineer: every page you touch should rank better and convert better than before. Work methodically, one section of this brief at a time, and show me a diff/summary after each section instead of silently rewriting everything at once.
+
+## PROJECT CONTEXT
+
+This is a personal portfolio site for Abhinav Tripathi, a full-stack developer.
+
+- **Frontend:** React 18, Vite, React Router DOM, Tailwind CSS, Framer Motion + GSAP for animation.
+- **Backend:** Python/FastAPI, SQLite via SQLAlchemy + aiosqlite, modular routers (projects, skills, experience, contact).
+- **Design language:** Dark "holographic/cyberpunk-lite" theme — deep navy/black backgrounds (`#050816`, `#0a0f1e`, `#0f172a`), accent colors blue `#3B82F6`, purple `#8B5CF6`, cyan `#06B6D4`, pink `#EC4899`, glassmorphism panels, glowing borders, Inter font throughout.
+- **Structure:** `src/components/sections` (Hero, About, Skills, Projects, AITools, Contact), `src/components/ui` (AIAssistant, FloatingIcons, ParticleField, CursorSpotlight), `src/data` (projects.js, skills.js, experience.js), `src/hooks` (useAIAssistant.js, useVoice.js, useFetch.js, useScrollReveal.js).
+- **Current AI Assistant:** Regex/keyword-matched intent engine (no LLM calls) that reads from `src/data/*.js` and answers questions about skills/projects/experience. Voice is handled entirely client-side via the Web Speech API — `window.speechSynthesis` for TTS (hunts for a "p
+<truncated 5468 bytes>
+4–96kbps is plenty for speech), and drop it in `src/assets/audio/intro.mp3`.
+2. **Add it to the assistant widget**: when `AIAssistant.jsx` first mounts/opens (not on every message — just the greeting state), play `intro.mp3` via a plain `HTMLAudioElement`/`<audio>` element instead of calling `window.speechSynthesis`.
+3. **Show the matching text** as a chat bubble in sync with playback, same as any other assistant message — just backed by a real audio file instead of synthesized speech for this one moment.
+4. **Controls**: add a mute/skip button on the intro so returning visitors aren't forced to hear it every time, and respect a "don't autoplay audio" a11y consideration — don't autoplay with sound on page load without a user gesture (most browsers block this anyway; trigger playback on the widget-open click instead).
+5. **Everything else stays as-is**: subsequent AI replies to user questions keep using whatever they use today (text only, or `speechSynthesis` if that's still desired) — no need to record clips for every possible dynamic answer.
+
+Send me the recorded `intro.mp3` once it's ready — don't fabricate a placeholder audio file.
+
+---
+
+## PART 4 — GENERAL QUALITY BAR
+
+- No console errors or warnings in production build.
+- Lighthouse scores after changes: Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO = 100 (share the before/after Lighthouse numbers).
+- Every change should be a reviewable diff — don't restructure the whole codebase silently.
+- Preserve the existing visual identity (holographic/cyberpunk-lite theme) — this is a *polish and correctness* pass, not a redesign, except where explicitly noted above.
+
+---
+
+## HOW TO USE THIS PROMPT
+Work through Part 1 → 2 → 3 → 4 in order, pausing after each part for my review before moving to the next. Start with Part 1 (SEO) now and give me a summary of findings before touching any code.
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-08-15T15:11:33+05:30.
+</ADDITIONAL_METADATA>

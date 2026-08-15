@@ -70,7 +70,7 @@ export default function Contact() {
       }} />
 
       <div className="section-container" style={{ position:"relative", zIndex:1 }}>
-        <div className="section-divider mb-24" />
+        <div className="section-divider" />
         <SectionHeader
           label="Contact"
           title="Let's Work Together"

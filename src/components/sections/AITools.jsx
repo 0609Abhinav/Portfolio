@@ -92,7 +92,7 @@ function AICard({ tool, index, isActive, onClick }) {
           ? `linear-gradient(135deg, ${tool.color}18, ${tool.color}08)`
           : "rgba(255,255,255,0.025)",
         border: `1px solid ${isActive ? tool.color + "50" : "rgba(255,255,255,0.07)"}`,
-        boxShadow: isActive ? `0 0 40px ${tool.color}20, 0 8px 32px rgba(0,0,0,0.4)` : "none",
+        boxShadow: isActive ? `0 0 20px ${tool.color}15, 0 8px 24px rgba(0,0,0,0.3)` : "none",
         transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
       }}
     >

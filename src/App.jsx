@@ -6,7 +6,9 @@ import Footer from "./components/layout/Footer";
 import Hero from "./components/sections/Hero";
 import CursorSpotlight from "./components/ui/CursorSpotlight";
 import { Skeleton } from "./components/ui/Skeleton";
+import { Helmet } from "react-helmet-async";
 import AIAssistant from "./components/ui/AIAssistant";
+import { personalInfo } from "./data/experience";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -50,6 +52,30 @@ export default function App() {
 
   return (
     <div className="min-h-screen text-slate-100" style={{ background: "#020510" }}>
+      <Helmet>
+        <title>{personalInfo.name} — Full-Stack Developer</title>
+        <meta name="description" content="Full-Stack Developer specializing in React, Python, FastAPI, and MERN stack. Building scalable web applications and APIs." />
+        <meta property="og:title" content={`${personalInfo.name} — Full-Stack Developer`} />
+        <meta property="og:description" content="Building scalable web applications with React, Python, and modern technologies." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <link rel="canonical" href="https://abhinavtripathi.dev/" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": personalInfo.name,
+            "jobTitle": personalInfo.title,
+            "url": "https://abhinavtripathi.dev/",
+            "sameAs": [
+              personalInfo.github,
+              personalInfo.linkedin
+            ],
+            "knowsAbout": ["React.js", "Python", "FastAPI", "Full-Stack Development"]
+          })}
+        </script>
+      </Helmet>
       <CursorSpotlight />
       <Navbar />
       <main>

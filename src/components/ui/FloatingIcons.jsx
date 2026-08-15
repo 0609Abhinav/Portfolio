@@ -98,7 +98,10 @@ function LaptopMan({ opacity }) {
     >
       <img
         src={laptopManImg}
-        alt=""
+        alt="Programmer working on a laptop"
+        width="420"
+        height="420"
+        loading="lazy"
         style={{
           width: "100%",
           height: "auto",
@@ -138,7 +141,7 @@ export default function FloatingIcons({ seed = 1, count = 18, opacity = 0.14 }) 
             }}
           >
             {icon.isLogo
-              ? <img src={logoImg} alt="" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+              ? <img src={logoImg} alt="Abhinav Tripathi Logo" width="64" height="64" loading="lazy" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
               : icon.svg
             }
           </motion.div>
