@@ -91,16 +91,33 @@ export default function useVoice() {
 
       // Pick a natural English male voice if available
       const voices = synthRef.current.getVoices();
-      const preferred = voices.find(
+      
+      // 1. First try to find a specifically marked male voice
+      let preferred = voices.find(
         (v) =>
           v.lang.startsWith("en") &&
-          (v.name.includes("Google UK English Male") ||
-            v.name.includes("Google US English") ||
-            v.name.includes("Daniel") ||
-            v.name.includes("Premium") ||
-            v.name.includes("Enhanced") ||
-            v.name.includes("Google"))
+          (v.name.toLowerCase().includes("male") ||
+           v.name.includes("David") ||
+           v.name.includes("Daniel") ||
+           v.name.includes("Arthur") ||
+           v.name.includes("Oliver") ||
+           v.name.includes("Mark") ||
+           v.name.includes("George")) &&
+          !v.name.toLowerCase().includes("female")
       );
+
+      // 2. Fallback to any English voice that isn't explicitly female
+      if (!preferred) {
+        preferred = voices.find(
+          (v) => v.lang.startsWith("en") && !v.name.toLowerCase().includes("female") && !v.name.includes("Zira") && !v.name.includes("Samantha")
+        );
+      }
+
+      // 3. Fallback to first English voice
+      if (!preferred) {
+        preferred = voices.find((v) => v.lang.startsWith("en"));
+      }
+
       if (preferred) utter.voice = preferred;
 
       utter.onstart = () => setIsSpeaking(true);

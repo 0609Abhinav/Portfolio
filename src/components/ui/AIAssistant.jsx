@@ -1,10 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import useAIAssistant, { QUICK_CHIPS } from "../../hooks/useAIAssistant";
-import useVoice from "../../hooks/useVoice";
-import introAudioSrc from "../../assets/audio/intro.m4a";
-
-/* ─────────────────────────────────────────────────────────────
+import useVoice from "../../hooks/useVoice";/* ─────────────────────────────────────────────────────────────
    AIAssistant — Floating AI Chat Widget
    Desktop : slides up from bottom-right corner
    Mobile  : full-screen bottom-sheet  ← handled via CSS class
@@ -14,11 +11,8 @@ import introAudioSrc from "../../assets/audio/intro.m4a";
 export default function AIAssistant() {
   const [open, setOpen]   = useState(false);
   const [input, setInput] = useState("");
-  const [introPlayed, setIntroPlayed] = useState(false);
-  const [isIntroPlaying, setIsIntroPlaying] = useState(false);
   const messagesEndRef    = useRef(null);
   const inputRef          = useRef(null);
-  const audioRef          = useRef(null);
 
   const { messages, isTyping, sendMessage } = useAIAssistant();
   const {
@@ -62,7 +56,6 @@ export default function AIAssistant() {
     const text = input.trim();
     if (!text) return;
     stopSpeaking();
-    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
     setInput("");
     setTranscript("");
     sendMessage(text, (aiText) => speak(aiText, { rate: 0.95 }));
@@ -70,7 +63,6 @@ export default function AIAssistant() {
 
   const handleChip = useCallback((chip) => {
     stopSpeaking();
-    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
     setInput("");
     setTranscript("");
     sendMessage(chip, (aiText) => speak(aiText, { rate: 0.95 }));
@@ -93,41 +85,13 @@ export default function AIAssistant() {
     setOpen(false);
     if (isSpeaking) stopSpeaking();
     if (isListening) stopListening();
-    if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; }
   };
 
   return (
     <>
-      <audio 
-        ref={audioRef} 
-        src={introAudioSrc} 
-        onPlay={() => setIsIntroPlaying(true)} 
-        onEnded={() => setIsIntroPlaying(false)}
-        onPause={() => setIsIntroPlaying(false)}
-      />
       {/* ── Floating Toggle Button ── */}
       <motion.button
-        onClick={() => {
-          if (open) {
-            handleClose();
-          } else {
-            setOpen(true);
-            if (!introPlayed && audioRef.current) {
-              setIntroPlayed(true);
-              audioRef.current.play().catch(e => {
-                console.warn("Autoplay blocked or audio failed, falling back to TTS", e);
-                const cleanText = messages[0].text
-                  .replace(/\*\*(.*?)\*\*/g, "$1")
-                  .replace(/\*(.*?)\*/g, "$1")
-                  .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
-                  .replace(/•/g, "")
-                  .replace(/🎤|👋|💻|📁|🤖|📬|🎓|🏅|✅|📄|⏱️|⚙️|🎨|🤔|🏆|⚡|🚀/g, "")
-                  .trim();
-                speak(cleanText, { rate: 0.95 });
-              });
-            }
-          }
-        }}
+        onClick={() => (open ? handleClose() : setOpen(true))}
         aria-label={open ? "Close AI assistant" : "Open AI assistant"}
         aria-expanded={open}
         initial={{ scale: 0, opacity: 0 }}
