@@ -57,17 +57,24 @@ function LaptopMan({ opacity }) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    let rafId = null;
     const onMove = (e) => {
-      const nx = (e.clientX / window.innerWidth  - 0.5) * 2;
-      const ny = (e.clientY / window.innerHeight - 0.5) * 2;
-      el.style.transform = `perspective(600px) rotateY(${nx * 12}deg) rotateX(${-ny * 8}deg) translateY(${ny * -6}px) scale(1.02)`;
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const nx = (e.clientX / window.innerWidth  - 0.5) * 2;
+        const ny = (e.clientY / window.innerHeight - 0.5) * 2;
+        el.style.transform = `perspective(600px) rotateY(${nx * 12}deg) rotateX(${-ny * 8}deg) translateY(${ny * -6}px) scale(1.02)`;
+        rafId = null;
+      });
     };
     const onLeave = () => {
+      if (rafId) cancelAnimationFrame(rafId);
       el.style.transform = "perspective(600px) rotateY(0deg) rotateX(0deg) translateY(0px) scale(1)";
     };
     window.addEventListener("mousemove", onMove, { passive: true });
     window.addEventListener("mouseleave", onLeave);
     return () => {
+      if (rafId) cancelAnimationFrame(rafId);
       window.removeEventListener("mousemove", onMove);
       window.removeEventListener("mouseleave", onLeave);
     };

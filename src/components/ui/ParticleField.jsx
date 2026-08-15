@@ -17,7 +17,7 @@ export default function ParticleField() {
     let raf;
 
     // ── Particles ──────────────────────────────────────────────
-    const COUNT = 110;
+    const COUNT = 50;
     const particles = Array.from({ length: COUNT }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,

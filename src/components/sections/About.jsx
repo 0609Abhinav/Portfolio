@@ -37,11 +37,11 @@ export default function About() {
             <motion.div initial={{ opacity:0, scale:0.9 }} animate={isVisible ? { opacity:1, scale:1 } : {}} transition={{ duration:0.7, ease:[0.22,1,0.36,1] }}
               style={{ flexShrink:0, width:180 }}>
               <div style={{ position:"relative", marginBottom:"1rem" }}>
-                <div style={{ position:"absolute", inset:-10, borderRadius:"1.25rem", background:"linear-gradient(135deg,#3B82F6,#8B5CF6)", filter:"blur(18px)", opacity:0.22 }} />
+                <div style={{ position:"absolute", inset:-10, borderRadius:"50%", background:"linear-gradient(135deg,#3B82F6,#8B5CF6)", filter:"blur(18px)", opacity:0.22 }} />
                 <img src={profilePic} alt={personalInfo.name}
-                  style={{ position:"relative", width:"100%", aspectRatio:"1", objectFit:"cover", borderRadius:"1.1rem", border:"2px solid rgba(139,92,246,0.25)" }}
+                  style={{ position:"relative", width:180, height:180, objectFit:"cover", borderRadius:"50%", border:"3px solid rgba(139,92,246,0.6)" }}
                   loading="lazy" />
-                <div style={{ position:"absolute", bottom:8, right:8, display:"flex", alignItems:"center", gap:4, padding:"3px 9px", borderRadius:999, fontSize:10, fontWeight:600, background:"rgba(5,8,22,0.92)", border:"1px solid rgba(74,222,128,0.3)", backdropFilter:"blur(12px)", color:"#4ade80" }}>
+                <div style={{ position:"absolute", bottom:0, left:"50%", transform:"translateX(-50%)", display:"flex", alignItems:"center", gap:4, padding:"3px 9px", borderRadius:999, fontSize:10, fontWeight:600, background:"rgba(5,8,22,0.92)", border:"1px solid rgba(74,222,128,0.3)", backdropFilter:"blur(12px)", color:"#4ade80", zIndex:10 }}>
                   <span style={{ width:5, height:5, borderRadius:"50%", background:"#4ade80", display:"inline-block" }} />
                   Available
                 </div>
