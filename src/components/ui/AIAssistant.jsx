@@ -219,7 +219,7 @@ export default function AIAssistant() {
                   width:38, height:38, borderRadius:"50%",
                   background:"radial-gradient(circle at 38% 35%,rgba(0,255,255,0.8),rgba(139,92,246,0.6),rgba(244,114,182,0.4))",
                   display:"flex", alignItems:"center", justifyContent:"center",
-                  boxShadow: (isSpeaking || isIntroPlaying) ? "0 0 14px rgba(0,255,255,0.6)" : "0 0 8px rgba(0,255,255,0.2)",
+                  boxShadow: isSpeaking ? "0 0 14px rgba(0,255,255,0.6)" : "0 0 8px rgba(0,255,255,0.2)",
                   transition:"box-shadow 0.3s", position:"relative",
                 }}>
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -235,14 +235,14 @@ export default function AIAssistant() {
                   <motion.span animate={{ opacity:[1,0.3,1] }} transition={{ duration:2, repeat:Infinity }}
                     style={{ width:5, height:5, borderRadius:"50%", background:"#4ade80", display:"inline-block" }}/>
                   <span style={{ fontSize:"0.68rem", color:"#64748b" }}>
-                    {(isSpeaking || isIntroPlaying) ? "Speaking…" : isListening ? "Listening…" : isTyping ? "Thinking…" : "Online"}
+                    {isSpeaking ? "Speaking…" : isListening ? "Listening…" : isTyping ? "Thinking…" : "Online"}
                   </span>
                 </div>
               </div>
 
-              {(isSpeaking || isIntroPlaying) && (
+              {isSpeaking && (
                 <motion.button initial={{ opacity:0, scale:0.8 }} animate={{ opacity:1, scale:1 }}
-                  onClick={() => { stopSpeaking(); if (audioRef.current) { audioRef.current.pause(); audioRef.current.currentTime = 0; } }} touchAction="manipulation"
+                  onClick={() => stopSpeaking()} touchAction="manipulation"
                   style={{ padding:"4px 10px", borderRadius:999, border:"1px solid rgba(0,255,255,0.3)", background:"rgba(0,255,255,0.08)", color:"#67e8f9", fontSize:"0.65rem", fontWeight:600, cursor:"pointer", flexShrink:0 }}>
                   ⏹ Stop
                 </motion.button>
